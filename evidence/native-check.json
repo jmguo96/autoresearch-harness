@@ -1,0 +1,11 @@
+{
+  "tools": {
+    "git": "/usr/bin/git",
+    "cc": "/usr/bin/cc",
+    "c++": "/usr/bin/c++"
+  },
+  "system_modified": false,
+  "local_prefix": "/mnt/data/autoresearch-harness-uv/.arlab/native-preflight/native",
+  "status": "missing_headers_or_libraries",
+  "error": "native-headers-and-link exited 1; inspect /mnt/data/autoresearch-harness-uv/.arlab/native-preflight/attempts/20260921-132048-f434cd/logs/001-native-headers-and-link.log"
+}

@@ -1,0 +1,275 @@
+................F......FFs.............................................. [ 31%]
+........................................................................ [ 62%]
+....................F................................................... [ 94%]
+.............                                                            [100%]
+=================================== FAILURES ===================================
+_____ test_audit_budget_preflight_accounts_for_open_candidate_before_jobs ______
+
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-1/test_audit_budget_preflight_ac0')
+
+    def test_audit_budget_preflight_accounts_for_open_candidate_before_jobs(tmp_path):
+        from arlab.algorithms.templates import template
+        from arlab.audit import audit_campaign
+        contract = demo_contract(tmp_path, steps=10, open_code=True)
+        agent = Harness(contract, tmp_path / "campaign")
+        try:
+            agent._initialize()
+            base = agent.store.get("baseline")
+            recipe = template("ensemble-mixture", tiny=True)
+            recipe["max_optimizer_steps_per_tick"] = 64
+            cid = agent.store.add_candidate(recipe, {"question": "cost fixture"}, base)
+            for candidate in [base, cid]:
+                record(agent, candidate, "lq-dev", 0, 10)
+            agent._execute(Decision(summary="freeze for audit", action=FinishAction(kind="finish", candidate=cid, conclusion="fixture")))
+        finally:
+            agent.close()
+        out = tmp_path / "audit"
+        preview = audit_campaign(tmp_path / "campaign", out, train_seeds=[41, 43], eval_seeds=[9], dry_run=True)
+        assert preview["required"]["optimizer_steps"] == 1 * 2 * 10 * (3 + 64)
+        assert not out.exists()
+        with pytest.raises(ValueError, match="before starting"):
+>           audit_campaign(tmp_path / "campaign", out, train_seeds=[41, 43], optimizer_step_limit=1)
+
+tests/test_context_research.py:233: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+campaign = PosixPath('/tmp/pytest-of-root/pytest-1/test_audit_budget_preflight_ac0/campaign')
+output = PosixPath('/tmp/pytest-of-root/pytest-1/test_audit_budget_preflight_ac0/audit')
+
+    def audit_campaign(campaign: Path, output: Path, *, split: str = "test",
+                       train_seeds: list[int] | None = None, eval_seeds: list[int] | None = None,
+                       optimizer_step_limit: int | None = None, dry_run: bool = False) -> dict[str, Any]:
+        """One immutable protocol per (campaign, split), resumable in the same workspace.
+    
+        `final` follows the contract's complete final_evaluation, including development
+        tasks with new seeds. It does not select the best method using test scores.
+        """
+        if split not in ("validation", "test", "final"):
+            raise ValueError("Audit split must be validation, test or predeclared final")
+        campaign, output = campaign.resolve(), output.resolve()
+        if output == campaign or output.is_relative_to(campaign) or campaign.is_relative_to(output):
+            raise ValueError("Use a separate, non-overlapping auditor workspace")
+        original = ResearchContract.model_validate(read_json(campaign / "contract.json"))
+        frozen = read_json(campaign / "frozen.json")
+        if frozen["contract_sha256"] != digest(original) or frozen["source_sha256"] != source_digest():
+            raise ValueError("Frozen method, contract, or implementation changed")
+        cases, protocol, estimate = _protocol(original, frozen, output, split, train_seeds,
+                                              eval_seeds, optimizer_step_limit)
+        seeds, episodes, steps = protocol["train_seeds"], protocol["eval_seeds"], protocol["steps"]
+        if dry_run:
+            return {"status": "preview", "required": estimate, "protocol": protocol,
+                    "authorized": estimate["optimizer_steps"] <= estimate["optimizer_step_limit"]}
+        if estimate["optimizer_steps"] > estimate["optimizer_step_limit"]:
+>           raise ValueError("Audit requires more optimizer steps than authorized; no work started")
+E           ValueError: Audit requires more optimizer steps than authorized; no work started
+
+src/arlab/audit.py:86: ValueError
+
+During handling of the above exception, another exception occurred:
+
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-1/test_audit_budget_preflight_ac0')
+
+    def test_audit_budget_preflight_accounts_for_open_candidate_before_jobs(tmp_path):
+        from arlab.algorithms.templates import template
+        from arlab.audit import audit_campaign
+        contract = demo_contract(tmp_path, steps=10, open_code=True)
+        agent = Harness(contract, tmp_path / "campaign")
+        try:
+            agent._initialize()
+            base = agent.store.get("baseline")
+            recipe = template("ensemble-mixture", tiny=True)
+            recipe["max_optimizer_steps_per_tick"] = 64
+            cid = agent.store.add_candidate(recipe, {"question": "cost fixture"}, base)
+            for candidate in [base, cid]:
+                record(agent, candidate, "lq-dev", 0, 10)
+            agent._execute(Decision(summary="freeze for audit", action=FinishAction(kind="finish", candidate=cid, conclusion="fixture")))
+        finally:
+            agent.close()
+        out = tmp_path / "audit"
+        preview = audit_campaign(tmp_path / "campaign", out, train_seeds=[41, 43], eval_seeds=[9], dry_run=True)
+        assert preview["required"]["optimizer_steps"] == 1 * 2 * 10 * (3 + 64)
+        assert not out.exists()
+>       with pytest.raises(ValueError, match="before starting"):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       AssertionError: Regex pattern did not match.
+E         Expected regex: 'before starting'
+E         Actual message: 'Audit requires more optimizer steps than authorized; no work started'
+
+tests/test_context_research.py:232: AssertionError
+________ test_malformed_research_data_enters_tool_failure_boundary[xml] ________
+
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-1/test_malformed_research_data_e0')
+error = 'xml'
+
+    @pytest.mark.parametrize('error', ['xml', 'missing_key'])
+    def test_malformed_research_data_enters_tool_failure_boundary(tmp_path, error):
+        from xml.etree.ElementTree import ParseError
+        from arlab.core.schema import SearchLiteratureAction
+        from arlab.research.network import ResearchError
+        class MalformedProvider:
+            def search_literature(self, **kwargs):
+                raise ParseError('broken XML') if error == 'xml' else KeyError('message')
+        agent = Harness(demo_contract(tmp_path, steps=2), tmp_path / 'run', research=MalformedProvider())
+        try:
+            agent._initialize()
+            with pytest.raises(ResearchError, match='could not be decoded'):
+>               agent._execute(Decision(summary='search', action=SearchLiteratureAction(
+                    kind='search_literature', query='IQL')))
+
+tests/test_context_research.py:316: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+src/arlab/core/harness.py:124: in _execute
+    authorize_action(self.contract, action.kind)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+contract = ResearchContract(schema_version=1, name='iql-lesson', goal='Research algorithms with in-sample value learning; use unc...ntainer_gpu=False), feedback='budgeted_simulator', max_candidates=3, final_checkpoint_only=True, final_evaluation=None)
+kind = 'search_literature'
+
+    def authorize_action(contract: ResearchContract, kind: str) -> None:
+        if kind not in enabled_tools(contract):
+>           raise PermissionError(f"Tool {kind!r} is disabled by the owner; no request was executed")
+E           PermissionError: Tool 'search_literature' is disabled by the owner; no request was executed
+
+src/arlab/core/capabilities.py:50: PermissionError
+____ test_malformed_research_data_enters_tool_failure_boundary[missing_key] ____
+
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-1/test_malformed_research_data_e1')
+error = 'missing_key'
+
+    @pytest.mark.parametrize('error', ['xml', 'missing_key'])
+    def test_malformed_research_data_enters_tool_failure_boundary(tmp_path, error):
+        from xml.etree.ElementTree import ParseError
+        from arlab.core.schema import SearchLiteratureAction
+        from arlab.research.network import ResearchError
+        class MalformedProvider:
+            def search_literature(self, **kwargs):
+                raise ParseError('broken XML') if error == 'xml' else KeyError('message')
+        agent = Harness(demo_contract(tmp_path, steps=2), tmp_path / 'run', research=MalformedProvider())
+        try:
+            agent._initialize()
+            with pytest.raises(ResearchError, match='could not be decoded'):
+>               agent._execute(Decision(summary='search', action=SearchLiteratureAction(
+                    kind='search_literature', query='IQL')))
+
+tests/test_context_research.py:316: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+src/arlab/core/harness.py:124: in _execute
+    authorize_action(self.contract, action.kind)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+contract = ResearchContract(schema_version=1, name='iql-lesson', goal='Research algorithms with in-sample value learning; use unc...ntainer_gpu=False), feedback='budgeted_simulator', max_candidates=3, final_checkpoint_only=True, final_evaluation=None)
+kind = 'search_literature'
+
+    def authorize_action(contract: ResearchContract, kind: str) -> None:
+        if kind not in enabled_tools(contract):
+>           raise PermissionError(f"Tool {kind!r} is disabled by the owner; no request was executed")
+E           PermissionError: Tool 'search_literature' is disabled by the owner; no request was executed
+
+src/arlab/core/capabilities.py:50: PermissionError
+____________ test_bad_action_does_not_produce_an_evaluation_result _____________
+
+dataset = (PosixPath('/tmp/pytest-of-root/pytest-1/test_bad_action_does_not_produ0/data.npz'), 'b12ec027e829dbff7706fc7cc728dfb3d0370ec148c7c4ec73390a32a1054d80')
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-1/test_bad_action_does_not_produ0')
+
+    def test_bad_action_does_not_produce_an_evaluation_result(dataset, tmp_path):
+        raw = request(dataset, steps=2)
+        raw["recipe"]["files"]["candidate.py"] = raw["recipe"]["files"]["candidate.py"].replace(
+            'count = int(self.cfg.get("action_candidates", 8))',
+            'return torch.full((len(observations), 2), float("nan"))\n        count = 1')
+        trained = train_code(raw, tmp_path / "train")
+        with pytest.raises(ValueError, match="non-finite"):
+>           evaluate_policy(evaluation_request(tmp_path / "train", trained, raw), tmp_path / "eval")
+
+tests/test_open_algorithms.py:447: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+src/arlab/tasks/iql/evaluator.py:101: in evaluate_policy
+    policy = PythonPolicy(artifact, request["artifact_sha256"], request["training_binding"], execution)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <arlab.algorithms.policy.PythonPolicy object at 0x7fb6a10f7100>
+directory = PosixPath('/tmp/pytest-of-root/pytest-1/test_bad_action_does_not_produ0/train/artifact')
+expected_hash = 'd70e2c44e7cf458db847fc370da9bd773d6d776ede1d8fc3a0b80bfe3c818949'
+binding = 'b552bf83a5ef43df4af6f58d9bda2302bf9638f24dd9417212e80add173816fb'
+policy = CodeExecutionPolicy(mode='trusted_local', docker_image=None, max_parameters=50000000, max_artifact_bytes=512000000, ma...inference_timeout_seconds=15, startup_timeout_seconds=90, container_memory='8g', container_cpus=2, container_gpu=False)
+
+    def __init__(self, directory: Path, expected_hash: str, binding: str, policy: CodeExecutionPolicy):
+        if policy.mode == "disabled":
+            raise PermissionError("Owner must authorize Python policy execution")
+        self.manifest, _recipe, tensors = validate_artifact(directory, expected_hash, binding, policy)
+        self.mean, self.std = tensors["observation_mean"].numpy(), tensors["observation_std"].numpy()
+        self.low, self.high = tensors["action_low"].numpy(), tensors["action_high"].numpy()
+        if (self.mean.shape != (self.manifest.observation_dim,) or self.std.shape != self.mean.shape
+                or self.low.shape != (self.manifest.action_dim,) or self.high.shape != self.low.shape
+                or not (self.std > 0).all() or not (self.high > self.low).all()):
+            raise ValueError("Invalid policy normalization")
+        self.policy, self.buffer = policy, b""
+        self.calls, self.action_seconds, self.max_action_seconds = 0, 0.0, 0.0
+        self.child_audit: dict[str, Any] = {}
+        self.process: subprocess.Popen | None = None
+        self.container_name: str | None = None
+        self.temporary = tempfile.TemporaryDirectory(prefix="arlab-policy-")
+        command = [sys.executable, "-B", "-m", "arlab.algorithms.policy_worker",
+                   "--artifact", str(directory.resolve()), "--expected-hash", expected_hash,
+                   "--binding", binding, "--max-parameters", str(policy.max_parameters),
+                   "--max-artifact-bytes", str(policy.max_artifact_bytes),
+                   "--implementation-sha256", source_digest()]
+        if policy.mode == "docker":
+            self.container_name = "arlab-policy-" + uuid.uuid4().hex[:12]
+            # The scoring process stays on the owner side of this boundary.
+            command = ["docker", "run", "--rm", "-i", "--name", self.container_name,
+                       "--network=none", "--read-only", "--cap-drop=ALL", "--security-opt=no-new-privileges",
+                       "--pids-limit=128", "--memory=" + policy.container_memory,
+                       "--cpus=" + str(policy.container_cpus), "--user", f"{os.getuid()}:{os.getgid()}",
+                       "--tmpfs", "/tmp:rw,noexec,nosuid,size=256m", "--workdir", "/tmp",
+                       "--mount", f"type=bind,source={directory.resolve()},target=/policy,readonly",
+                       "-e", "HOME=/tmp", "-e", "PYTHONDONTWRITEBYTECODE=1", policy.docker_image,
+                       "python", "-B", "-m", "arlab.algorithms.policy_worker", "--artifact", "/policy",
+                       "--expected-hash", expected_hash, "--binding", binding,
+                       "--max-parameters", str(policy.max_parameters),
+                       "--max-artifact-bytes", str(policy.max_artifact_bytes),
+                       "--implementation-sha256", source_digest()]
+        environment = policy_process_environment(self.temporary.name, policy.mode)
+        started = time.monotonic()
+        try:
+            self.process = subprocess.Popen(command, stdin=subprocess.PIPE, stdout=subprocess.PIPE,
+                stderr=subprocess.DEVNULL, cwd=self.temporary.name, env=environment,
+                start_new_session=True, bufsize=0)
+            os.set_blocking(self.process.stdout.fileno(), False)
+            os.set_blocking(self.process.stdin.fileno(), False)
+            ready = self._read(time.monotonic() + policy.startup_timeout_seconds)
+            if ready.get("status") != "ready":
+>               raise ValueError(f"Policy startup failed: {ready.get('error', ready)}")
+E               ValueError: Policy startup failed: ValueError: Policy worker implementation differs from evaluator
+
+src/arlab/algorithms/policy.py:132: ValueError
+
+During handling of the above exception, another exception occurred:
+
+dataset = (PosixPath('/tmp/pytest-of-root/pytest-1/test_bad_action_does_not_produ0/data.npz'), 'b12ec027e829dbff7706fc7cc728dfb3d0370ec148c7c4ec73390a32a1054d80')
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-1/test_bad_action_does_not_produ0')
+
+    def test_bad_action_does_not_produce_an_evaluation_result(dataset, tmp_path):
+        raw = request(dataset, steps=2)
+        raw["recipe"]["files"]["candidate.py"] = raw["recipe"]["files"]["candidate.py"].replace(
+            'count = int(self.cfg.get("action_candidates", 8))',
+            'return torch.full((len(observations), 2), float("nan"))\n        count = 1')
+        trained = train_code(raw, tmp_path / "train")
+>       with pytest.raises(ValueError, match="non-finite"):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       AssertionError: Regex pattern did not match.
+E         Expected regex: 'non-finite'
+E         Actual message: 'Policy startup failed: ValueError: Policy worker implementation differs from evaluator'
+
+tests/test_open_algorithms.py:446: AssertionError
+=========================== short test summary info ============================
+SKIPPED [1] tests/test_d4rl_optional.py:7: Legacy D4RL/Gym/MuJoCo are not installed
+FAILED tests/test_context_research.py::test_audit_budget_preflight_accounts_for_open_candidate_before_jobs - AssertionError: Regex pattern did not match.
+  Expected regex: 'before starting'
+  Actual message: 'Audit requires more optimizer steps than authorized; no work started'
+FAILED tests/test_context_research.py::test_malformed_research_data_enters_tool_failure_boundary[xml] - PermissionError: Tool 'search_literature' is disabled by the owner; no request was executed
+FAILED tests/test_context_research.py::test_malformed_research_data_enters_tool_failure_boundary[missing_key] - PermissionError: Tool 'search_literature' is disabled by the owner; no request was executed
+FAILED tests/test_open_algorithms.py::test_bad_action_does_not_produce_an_evaluation_result - AssertionError: Regex pattern did not match.
+  Expected regex: 'non-finite'
+  Actual message: 'Policy startup failed: ValueError: Policy worker implementation differs from evaluator'
+4 failed, 224 passed, 1 skipped in 88.94s (0:01:28)

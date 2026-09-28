@@ -1,0 +1,87 @@
+{
+  "version": "0.5.0",
+  "date": "2026-09-20",
+  "source_sha256": "3b07c4ee234e7ca097324900857b4be1c0015e0aeddbafc9f7487887e4463a93",
+  "deployment_identity": "c286c106a38e46754668f9215aba14602f23111032328565c1e79721ca2c0233",
+  "runtime": {
+    "python": "3.13.5",
+    "platform": "Linux-6.18.44-x86_64-with-glibc2.41",
+    "packages": {
+      "torch": "2.10.0+cpu",
+      "numpy": "2.3.5",
+      "pydantic": "2.13.4",
+      "h5py": "3.15.1",
+      "safetensors": "0.7.0",
+      "gym": null,
+      "D4RL": null,
+      "mujoco-py": null
+    }
+  },
+  "tests": {
+    "tests": 255,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 1,
+    "passed": 254
+  },
+  "new_tests": 26,
+  "default_protocol": {
+    "exploration_tasks": [
+      "hopper-medium-v2"
+    ],
+    "final_tasks": [
+      "halfcheetah-medium-v2",
+      "halfcheetah-medium-replay-v2",
+      "halfcheetah-medium-expert-v2",
+      "hopper-medium-v2",
+      "hopper-medium-replay-v2",
+      "hopper-medium-expert-v2",
+      "walker2d-medium-v2",
+      "walker2d-medium-replay-v2",
+      "walker2d-medium-expert-v2"
+    ],
+    "final_train_seeds": [
+      41,
+      43,
+      47,
+      53,
+      59
+    ],
+    "final_updates_per_run": 1000000,
+    "final_eval_episodes_per_run": 10,
+    "runs_for_two_different_methods": 90,
+    "same_method_deduplicated_runs": 45,
+    "RSI": false,
+    "literature_extra_api_key": false,
+    "general_web_search": false
+  },
+  "actual_checks": {
+    "full_pytest": "passed_with_one_missing_D4RL_skip",
+    "real_single_task_to_nine_task_final": "passed_on_SYNTHETIC_tasks_only_2_updates_1_seed_baseline_retained",
+    "nine_task_failure_resume_permission_statistics": "passed_using_explicit_test_fixtures",
+    "student_start_entry": "passed_demo_with_reused_runtime_12_updates_3_candidates_no_network_install",
+    "default_entry_dry_run": "passed_no_deployment_created",
+    "wheel_built_and_installed": "passed_without_dependency_install",
+    "wheel_code_matches_source": true,
+    "IQL_and_open_algorithm_implementation": "unchanged_against_v040",
+    "Python310_syntax": "parsed_with_ast_feature_version_3_10_not_a_Python310_runtime_test",
+    "installed_wheel_real_synthetic_demo": "completed_2_updates_1_candidate"
+  },
+  "not_verified": [
+    "fresh_online_D4RL_install",
+    "official_full_D4RL_data_download",
+    "nine_task_D4RL_training_results",
+    "legacy_MuJoCo",
+    "CUDA",
+    "Docker",
+    "real_LLM_provider",
+    "live_research_API_requests_in_this_runtime"
+  ],
+  "scientific_claims": {
+    "algorithm_improvement_proven": false,
+    "general_agent_superiority_proven": false,
+    "note": "Synthetic protocol execution is not D4RL benchmark evidence."
+  },
+  "review": "docs/review-v0.5.md",
+  "first_test_iteration": "Old malformed-provider fixtures needed explicit permission; error wording fixed; source changed during one worker check. Final suite rerun on frozen source."
+}

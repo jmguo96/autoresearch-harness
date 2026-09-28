@@ -1,0 +1,1290 @@
+{
+  "$defs": {
+    "BranchStatusAction": {
+      "additionalProperties": false,
+      "properties": {
+        "kind": {
+          "const": "set_branch_status",
+          "title": "Kind",
+          "type": "string"
+        },
+        "candidate": {
+          "title": "Candidate",
+          "type": "string"
+        },
+        "active": {
+          "title": "Active",
+          "type": "boolean"
+        },
+        "reason": {
+          "maxLength": 2000,
+          "minLength": 1,
+          "title": "Reason",
+          "type": "string"
+        }
+      },
+      "required": [
+        "kind",
+        "candidate",
+        "active",
+        "reason"
+      ],
+      "title": "BranchStatusAction",
+      "type": "object"
+    },
+    "CheckCandidateAction": {
+      "additionalProperties": false,
+      "properties": {
+        "kind": {
+          "const": "check_candidate",
+          "title": "Kind",
+          "type": "string"
+        },
+        "candidate": {
+          "title": "Candidate",
+          "type": "string"
+        },
+        "case": {
+          "title": "Case",
+          "type": "string"
+        },
+        "train_seed": {
+          "title": "Train Seed",
+          "type": "integer"
+        },
+        "steps": {
+          "default": 2,
+          "maximum": 100,
+          "minimum": 1,
+          "title": "Steps",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "kind",
+        "candidate",
+        "case",
+        "train_seed"
+      ],
+      "title": "CheckCandidateAction",
+      "type": "object"
+    },
+    "CompareAction": {
+      "additionalProperties": false,
+      "properties": {
+        "kind": {
+          "const": "compare",
+          "title": "Kind",
+          "type": "string"
+        },
+        "candidate": {
+          "title": "Candidate",
+          "type": "string"
+        },
+        "steps": {
+          "exclusiveMinimum": 0,
+          "title": "Steps",
+          "type": "integer"
+        },
+        "cases": {
+          "anyOf": [
+            {
+              "items": {
+                "type": "string"
+              },
+              "minItems": 1,
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Cases"
+        },
+        "train_seeds": {
+          "anyOf": [
+            {
+              "items": {
+                "type": "integer"
+              },
+              "minItems": 1,
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Train Seeds"
+        },
+        "eval_episodes": {
+          "anyOf": [
+            {
+              "minimum": 1,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Eval Episodes"
+        }
+      },
+      "required": [
+        "kind",
+        "candidate",
+        "steps"
+      ],
+      "title": "CompareAction",
+      "type": "object"
+    },
+    "ContinueTrialAction": {
+      "additionalProperties": false,
+      "properties": {
+        "kind": {
+          "const": "continue_trial",
+          "title": "Kind",
+          "type": "string"
+        },
+        "trial": {
+          "title": "Trial",
+          "type": "string"
+        },
+        "steps": {
+          "description": "Cumulative target, not additional steps",
+          "exclusiveMinimum": 0,
+          "title": "Steps",
+          "type": "integer"
+        },
+        "eval_episodes": {
+          "anyOf": [
+            {
+              "minimum": 1,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Eval Episodes"
+        }
+      },
+      "required": [
+        "kind",
+        "trial",
+        "steps"
+      ],
+      "title": "ContinueTrialAction",
+      "type": "object"
+    },
+    "EditAlgorithmAction": {
+      "additionalProperties": false,
+      "description": "Immutable source edit; never an edit to the running evaluator or harness.",
+      "properties": {
+        "kind": {
+          "const": "edit_algorithm",
+          "title": "Kind",
+          "type": "string"
+        },
+        "parent": {
+          "title": "Parent",
+          "type": "string"
+        },
+        "new_branch": {
+          "default": false,
+          "title": "New Branch",
+          "type": "boolean"
+        },
+        "name": {
+          "maxLength": 120,
+          "minLength": 1,
+          "title": "Name",
+          "type": "string"
+        },
+        "hypothesis": {
+          "$ref": "#/$defs/Hypothesis"
+        },
+        "template": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Template"
+        },
+        "edits": {
+          "items": {
+            "$ref": "#/$defs/SourceEdit"
+          },
+          "maxItems": 64,
+          "title": "Edits",
+          "type": "array"
+        },
+        "config_updates": {
+          "additionalProperties": true,
+          "title": "Config Updates",
+          "type": "object"
+        },
+        "config_remove": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Config Remove",
+          "type": "array"
+        },
+        "entrypoint": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Entrypoint"
+        },
+        "max_optimizer_steps_per_tick": {
+          "anyOf": [
+            {
+              "maximum": 256,
+              "minimum": 1,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Max Optimizer Steps Per Tick"
+        }
+      },
+      "required": [
+        "kind",
+        "parent",
+        "name",
+        "hypothesis"
+      ],
+      "title": "EditAlgorithmAction",
+      "type": "object"
+    },
+    "FetchSourceAction": {
+      "additionalProperties": false,
+      "properties": {
+        "kind": {
+          "const": "fetch_source",
+          "title": "Kind",
+          "type": "string"
+        },
+        "url": {
+          "maxLength": 2000,
+          "minLength": 1,
+          "title": "Url",
+          "type": "string"
+        },
+        "refresh": {
+          "default": false,
+          "title": "Refresh",
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "kind",
+        "url"
+      ],
+      "title": "FetchSourceAction",
+      "type": "object"
+    },
+    "FindSourceAction": {
+      "additionalProperties": false,
+      "properties": {
+        "kind": {
+          "const": "find_source",
+          "title": "Kind",
+          "type": "string"
+        },
+        "source": {
+          "title": "Source",
+          "type": "string"
+        },
+        "query": {
+          "maxLength": 500,
+          "minLength": 1,
+          "title": "Query",
+          "type": "string"
+        },
+        "offset": {
+          "default": 0,
+          "minimum": 0,
+          "title": "Offset",
+          "type": "integer"
+        },
+        "limit": {
+          "default": 10,
+          "maximum": 20,
+          "minimum": 1,
+          "title": "Limit",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "kind",
+        "source",
+        "query"
+      ],
+      "title": "FindSourceAction",
+      "type": "object"
+    },
+    "FinishAction": {
+      "additionalProperties": false,
+      "properties": {
+        "kind": {
+          "const": "finish",
+          "title": "Kind",
+          "type": "string"
+        },
+        "candidate": {
+          "title": "Candidate",
+          "type": "string"
+        },
+        "conclusion": {
+          "maxLength": 5000,
+          "minLength": 1,
+          "title": "Conclusion",
+          "type": "string"
+        }
+      },
+      "required": [
+        "kind",
+        "candidate",
+        "conclusion"
+      ],
+      "title": "FinishAction",
+      "type": "object"
+    },
+    "Hypothesis": {
+      "additionalProperties": false,
+      "properties": {
+        "question": {
+          "maxLength": 4000,
+          "minLength": 1,
+          "title": "Question",
+          "type": "string"
+        },
+        "prediction": {
+          "maxLength": 4000,
+          "minLength": 1,
+          "title": "Prediction",
+          "type": "string"
+        },
+        "rationale": {
+          "maxLength": 4000,
+          "minLength": 1,
+          "title": "Rationale",
+          "type": "string"
+        },
+        "falsification": {
+          "maxLength": 4000,
+          "minLength": 1,
+          "title": "Falsification",
+          "type": "string"
+        },
+        "evidence_ids": {
+          "items": {
+            "type": "string"
+          },
+          "maxItems": 30,
+          "title": "Evidence Ids",
+          "type": "array"
+        }
+      },
+      "required": [
+        "question",
+        "prediction",
+        "rationale",
+        "falsification"
+      ],
+      "title": "Hypothesis",
+      "type": "object"
+    },
+    "InspectAction": {
+      "additionalProperties": false,
+      "properties": {
+        "kind": {
+          "const": "inspect",
+          "title": "Kind",
+          "type": "string"
+        },
+        "target": {
+          "enum": [
+            "candidate",
+            "trial",
+            "skill",
+            "template",
+            "schema",
+            "plan",
+            "feedback",
+            "tool"
+          ],
+          "title": "Target",
+          "type": "string"
+        },
+        "id": {
+          "default": "",
+          "title": "Id",
+          "type": "string"
+        },
+        "path": {
+          "default": "",
+          "maxLength": 200,
+          "title": "Path",
+          "type": "string"
+        },
+        "start_line": {
+          "default": 1,
+          "minimum": 1,
+          "title": "Start Line",
+          "type": "integer"
+        },
+        "max_lines": {
+          "default": 60,
+          "maximum": 150,
+          "minimum": 1,
+          "title": "Max Lines",
+          "type": "integer"
+        },
+        "max_characters": {
+          "default": 5000,
+          "maximum": 6000,
+          "minimum": 500,
+          "title": "Max Characters",
+          "type": "integer"
+        },
+        "offset": {
+          "default": 0,
+          "minimum": 0,
+          "title": "Offset",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "kind",
+        "target"
+      ],
+      "title": "InspectAction",
+      "type": "object"
+    },
+    "PlanAction": {
+      "additionalProperties": false,
+      "properties": {
+        "kind": {
+          "const": "plan",
+          "title": "Kind",
+          "type": "string"
+        },
+        "items": {
+          "items": {
+            "$ref": "#/$defs/PlanItem"
+          },
+          "maxItems": 30,
+          "minItems": 1,
+          "title": "Items",
+          "type": "array"
+        },
+        "reason": {
+          "maxLength": 2000,
+          "minLength": 1,
+          "title": "Reason",
+          "type": "string"
+        }
+      },
+      "required": [
+        "kind",
+        "items",
+        "reason"
+      ],
+      "title": "PlanAction",
+      "type": "object"
+    },
+    "PlanItem": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "pattern": "^[a-zA-Z0-9_-]{1,50}$",
+          "title": "Id",
+          "type": "string"
+        },
+        "objective": {
+          "maxLength": 1000,
+          "minLength": 1,
+          "title": "Objective",
+          "type": "string"
+        },
+        "depends_on": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Depends On",
+          "type": "array"
+        },
+        "state": {
+          "default": "pending",
+          "enum": [
+            "pending",
+            "done",
+            "blocked"
+          ],
+          "title": "State",
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "objective"
+      ],
+      "title": "PlanItem",
+      "type": "object"
+    },
+    "ProposeAction": {
+      "additionalProperties": false,
+      "properties": {
+        "kind": {
+          "const": "propose",
+          "title": "Kind",
+          "type": "string"
+        },
+        "parent": {
+          "title": "Parent",
+          "type": "string"
+        },
+        "hypothesis": {
+          "$ref": "#/$defs/Hypothesis"
+        },
+        "recipe": {
+          "additionalProperties": true,
+          "title": "Recipe",
+          "type": "object"
+        },
+        "new_branch": {
+          "default": true,
+          "title": "New Branch",
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "kind",
+        "parent",
+        "hypothesis",
+        "recipe"
+      ],
+      "title": "ProposeAction",
+      "type": "object"
+    },
+    "QueryExperimentsAction": {
+      "additionalProperties": false,
+      "properties": {
+        "kind": {
+          "const": "query_experiments",
+          "title": "Kind",
+          "type": "string"
+        },
+        "target": {
+          "default": "trials",
+          "enum": [
+            "trials",
+            "candidates",
+            "panels",
+            "missing",
+            "checks",
+            "sources"
+          ],
+          "title": "Target",
+          "type": "string"
+        },
+        "candidate": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Candidate"
+        },
+        "case": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Case"
+        },
+        "steps": {
+          "anyOf": [
+            {
+              "exclusiveMinimum": 0,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Steps"
+        },
+        "status": {
+          "anyOf": [
+            {
+              "enum": [
+                "complete",
+                "running",
+                "failed"
+              ],
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Status"
+        },
+        "offset": {
+          "default": 0,
+          "minimum": 0,
+          "title": "Offset",
+          "type": "integer"
+        },
+        "limit": {
+          "default": 10,
+          "maximum": 30,
+          "minimum": 1,
+          "title": "Limit",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "kind"
+      ],
+      "title": "QueryExperimentsAction",
+      "type": "object"
+    },
+    "ReadRepositoryAction": {
+      "additionalProperties": false,
+      "properties": {
+        "kind": {
+          "const": "read_repository",
+          "title": "Kind",
+          "type": "string"
+        },
+        "repository": {
+          "pattern": "^[A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+$",
+          "title": "Repository",
+          "type": "string"
+        },
+        "ref": {
+          "default": "HEAD",
+          "maxLength": 100,
+          "minLength": 1,
+          "title": "Ref",
+          "type": "string"
+        },
+        "path": {
+          "default": "",
+          "maxLength": 500,
+          "title": "Path",
+          "type": "string"
+        },
+        "offset": {
+          "default": 0,
+          "minimum": 0,
+          "title": "Offset",
+          "type": "integer"
+        },
+        "limit": {
+          "default": 40,
+          "maximum": 100,
+          "minimum": 1,
+          "title": "Limit",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "kind",
+        "repository"
+      ],
+      "title": "ReadRepositoryAction",
+      "type": "object"
+    },
+    "ReadSourceAction": {
+      "additionalProperties": false,
+      "properties": {
+        "kind": {
+          "const": "read_source",
+          "title": "Kind",
+          "type": "string"
+        },
+        "source": {
+          "title": "Source",
+          "type": "string"
+        },
+        "start_line": {
+          "default": 1,
+          "minimum": 1,
+          "title": "Start Line",
+          "type": "integer"
+        },
+        "max_lines": {
+          "default": 60,
+          "maximum": 150,
+          "minimum": 1,
+          "title": "Max Lines",
+          "type": "integer"
+        },
+        "max_characters": {
+          "default": 5000,
+          "maximum": 6000,
+          "minimum": 500,
+          "title": "Max Characters",
+          "type": "integer"
+        },
+        "offset": {
+          "default": 0,
+          "minimum": 0,
+          "title": "Offset",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "kind",
+        "source"
+      ],
+      "title": "ReadSourceAction",
+      "type": "object"
+    },
+    "ReadTrialLogAction": {
+      "additionalProperties": false,
+      "properties": {
+        "kind": {
+          "const": "read_trial_log",
+          "title": "Kind",
+          "type": "string"
+        },
+        "trial": {
+          "title": "Trial",
+          "type": "string"
+        },
+        "stream": {
+          "default": "train",
+          "enum": [
+            "train",
+            "evaluation",
+            "metrics",
+            "train_error",
+            "evaluation_error",
+            "value_boundary"
+          ],
+          "title": "Stream",
+          "type": "string"
+        },
+        "start_line": {
+          "default": 1,
+          "minimum": 1,
+          "title": "Start Line",
+          "type": "integer"
+        },
+        "max_lines": {
+          "default": 60,
+          "maximum": 150,
+          "minimum": 1,
+          "title": "Max Lines",
+          "type": "integer"
+        },
+        "max_characters": {
+          "default": 5000,
+          "maximum": 6000,
+          "minimum": 500,
+          "title": "Max Characters",
+          "type": "integer"
+        },
+        "offset": {
+          "default": 0,
+          "minimum": 0,
+          "title": "Offset",
+          "type": "integer"
+        },
+        "tail": {
+          "default": false,
+          "title": "Tail",
+          "type": "boolean"
+        },
+        "start_step": {
+          "anyOf": [
+            {
+              "minimum": 0,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Start Step"
+        },
+        "end_step": {
+          "anyOf": [
+            {
+              "minimum": 0,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "End Step"
+        },
+        "fields": {
+          "items": {
+            "type": "string"
+          },
+          "maxItems": 20,
+          "title": "Fields",
+          "type": "array"
+        }
+      },
+      "required": [
+        "kind",
+        "trial"
+      ],
+      "title": "ReadTrialLogAction",
+      "type": "object"
+    },
+    "RecallAction": {
+      "additionalProperties": false,
+      "properties": {
+        "kind": {
+          "const": "recall",
+          "title": "Kind",
+          "type": "string"
+        },
+        "query": {
+          "maxLength": 1000,
+          "minLength": 1,
+          "title": "Query",
+          "type": "string"
+        },
+        "limit": {
+          "default": 5,
+          "maximum": 20,
+          "minimum": 1,
+          "title": "Limit",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "kind",
+        "query"
+      ],
+      "title": "RecallAction",
+      "type": "object"
+    },
+    "RememberAction": {
+      "additionalProperties": false,
+      "properties": {
+        "kind": {
+          "const": "remember",
+          "title": "Kind",
+          "type": "string"
+        },
+        "text": {
+          "maxLength": 3000,
+          "minLength": 1,
+          "title": "Text",
+          "type": "string"
+        },
+        "evidence_ids": {
+          "items": {
+            "type": "string"
+          },
+          "maxItems": 20,
+          "minItems": 1,
+          "title": "Evidence Ids",
+          "type": "array"
+        },
+        "category": {
+          "default": "hypothesis",
+          "enum": [
+            "hypothesis",
+            "procedure",
+            "literature",
+            "decision"
+          ],
+          "title": "Category",
+          "type": "string"
+        },
+        "supersedes": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Supersedes"
+        }
+      },
+      "required": [
+        "kind",
+        "text",
+        "evidence_ids"
+      ],
+      "title": "RememberAction",
+      "type": "object"
+    },
+    "RunAction": {
+      "additionalProperties": false,
+      "properties": {
+        "kind": {
+          "const": "run",
+          "title": "Kind",
+          "type": "string"
+        },
+        "candidate": {
+          "title": "Candidate",
+          "type": "string"
+        },
+        "case": {
+          "title": "Case",
+          "type": "string"
+        },
+        "train_seed": {
+          "title": "Train Seed",
+          "type": "integer"
+        },
+        "steps": {
+          "exclusiveMinimum": 0,
+          "title": "Steps",
+          "type": "integer"
+        },
+        "eval_episodes": {
+          "anyOf": [
+            {
+              "minimum": 1,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Eval Episodes"
+        }
+      },
+      "required": [
+        "kind",
+        "candidate",
+        "case",
+        "train_seed",
+        "steps"
+      ],
+      "title": "RunAction",
+      "type": "object"
+    },
+    "SearchLiteratureAction": {
+      "additionalProperties": false,
+      "properties": {
+        "kind": {
+          "const": "search_literature",
+          "title": "Kind",
+          "type": "string"
+        },
+        "query": {
+          "maxLength": 1500,
+          "minLength": 1,
+          "title": "Query",
+          "type": "string"
+        },
+        "provider": {
+          "default": "arxiv",
+          "enum": [
+            "arxiv",
+            "crossref"
+          ],
+          "title": "Provider",
+          "type": "string"
+        },
+        "offset": {
+          "default": 0,
+          "maximum": 10000,
+          "minimum": 0,
+          "title": "Offset",
+          "type": "integer"
+        },
+        "limit": {
+          "default": 5,
+          "maximum": 20,
+          "minimum": 1,
+          "title": "Limit",
+          "type": "integer"
+        },
+        "refresh": {
+          "default": false,
+          "title": "Refresh",
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "kind",
+        "query"
+      ],
+      "title": "SearchLiteratureAction",
+      "type": "object"
+    },
+    "SearchRepositoriesAction": {
+      "additionalProperties": false,
+      "properties": {
+        "kind": {
+          "const": "search_repositories",
+          "title": "Kind",
+          "type": "string"
+        },
+        "query": {
+          "maxLength": 1000,
+          "minLength": 1,
+          "title": "Query",
+          "type": "string"
+        },
+        "page": {
+          "default": 1,
+          "maximum": 100,
+          "minimum": 1,
+          "title": "Page",
+          "type": "integer"
+        },
+        "limit": {
+          "default": 5,
+          "maximum": 20,
+          "minimum": 1,
+          "title": "Limit",
+          "type": "integer"
+        },
+        "refresh": {
+          "default": false,
+          "title": "Refresh",
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "kind",
+        "query"
+      ],
+      "title": "SearchRepositoriesAction",
+      "type": "object"
+    },
+    "SearchWebAction": {
+      "additionalProperties": false,
+      "properties": {
+        "kind": {
+          "const": "search_web",
+          "title": "Kind",
+          "type": "string"
+        },
+        "query": {
+          "maxLength": 1500,
+          "minLength": 1,
+          "title": "Query",
+          "type": "string"
+        },
+        "limit": {
+          "default": 5,
+          "maximum": 10,
+          "minimum": 1,
+          "title": "Limit",
+          "type": "integer"
+        },
+        "offset": {
+          "default": 0,
+          "maximum": 9,
+          "minimum": 0,
+          "title": "Offset",
+          "type": "integer"
+        },
+        "refresh": {
+          "default": false,
+          "title": "Refresh",
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "kind",
+        "query"
+      ],
+      "title": "SearchWebAction",
+      "type": "object"
+    },
+    "SourceEdit": {
+      "additionalProperties": false,
+      "properties": {
+        "kind": {
+          "enum": [
+            "write",
+            "replace",
+            "delete"
+          ],
+          "title": "Kind",
+          "type": "string"
+        },
+        "path": {
+          "maxLength": 200,
+          "minLength": 1,
+          "title": "Path",
+          "type": "string"
+        },
+        "old": {
+          "default": "",
+          "maxLength": 1000000,
+          "title": "Old",
+          "type": "string"
+        },
+        "new": {
+          "default": "",
+          "maxLength": 1000000,
+          "title": "New",
+          "type": "string"
+        }
+      },
+      "required": [
+        "kind",
+        "path"
+      ],
+      "title": "SourceEdit",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "description": "A short justification is an audit artifact, not a request for hidden reasoning.",
+  "properties": {
+    "summary": {
+      "maxLength": 2000,
+      "minLength": 1,
+      "title": "Summary",
+      "type": "string"
+    },
+    "action": {
+      "discriminator": {
+        "mapping": {
+          "check_candidate": "#/$defs/CheckCandidateAction",
+          "compare": "#/$defs/CompareAction",
+          "continue_trial": "#/$defs/ContinueTrialAction",
+          "edit_algorithm": "#/$defs/EditAlgorithmAction",
+          "fetch_source": "#/$defs/FetchSourceAction",
+          "find_source": "#/$defs/FindSourceAction",
+          "finish": "#/$defs/FinishAction",
+          "inspect": "#/$defs/InspectAction",
+          "plan": "#/$defs/PlanAction",
+          "propose": "#/$defs/ProposeAction",
+          "query_experiments": "#/$defs/QueryExperimentsAction",
+          "read_repository": "#/$defs/ReadRepositoryAction",
+          "read_source": "#/$defs/ReadSourceAction",
+          "read_trial_log": "#/$defs/ReadTrialLogAction",
+          "recall": "#/$defs/RecallAction",
+          "remember": "#/$defs/RememberAction",
+          "run": "#/$defs/RunAction",
+          "search_literature": "#/$defs/SearchLiteratureAction",
+          "search_repositories": "#/$defs/SearchRepositoriesAction",
+          "search_web": "#/$defs/SearchWebAction",
+          "set_branch_status": "#/$defs/BranchStatusAction"
+        },
+        "propertyName": "kind"
+      },
+      "oneOf": [
+        {
+          "$ref": "#/$defs/PlanAction"
+        },
+        {
+          "$ref": "#/$defs/ProposeAction"
+        },
+        {
+          "$ref": "#/$defs/EditAlgorithmAction"
+        },
+        {
+          "$ref": "#/$defs/RunAction"
+        },
+        {
+          "$ref": "#/$defs/ContinueTrialAction"
+        },
+        {
+          "$ref": "#/$defs/BranchStatusAction"
+        },
+        {
+          "$ref": "#/$defs/ReadTrialLogAction"
+        },
+        {
+          "$ref": "#/$defs/InspectAction"
+        },
+        {
+          "$ref": "#/$defs/RecallAction"
+        },
+        {
+          "$ref": "#/$defs/RememberAction"
+        },
+        {
+          "$ref": "#/$defs/FinishAction"
+        },
+        {
+          "$ref": "#/$defs/SearchLiteratureAction"
+        },
+        {
+          "$ref": "#/$defs/SearchWebAction"
+        },
+        {
+          "$ref": "#/$defs/FetchSourceAction"
+        },
+        {
+          "$ref": "#/$defs/ReadSourceAction"
+        },
+        {
+          "$ref": "#/$defs/FindSourceAction"
+        },
+        {
+          "$ref": "#/$defs/SearchRepositoriesAction"
+        },
+        {
+          "$ref": "#/$defs/ReadRepositoryAction"
+        },
+        {
+          "$ref": "#/$defs/QueryExperimentsAction"
+        },
+        {
+          "$ref": "#/$defs/CompareAction"
+        },
+        {
+          "$ref": "#/$defs/CheckCandidateAction"
+        }
+      ],
+      "title": "Action"
+    }
+  },
+  "required": [
+    "summary",
+    "action"
+  ],
+  "title": "Decision",
+  "type": "object"
+}

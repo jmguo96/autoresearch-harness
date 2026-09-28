@@ -1,0 +1,27 @@
+{
+  "action_count": 23,
+  "algorithm_improvement_proven": false,
+  "controller": "scripted_NOT_LLM",
+  "development_actual": {
+    "eval_episodes": 35.0,
+    "evaluation_seconds": 0.16127329600067242,
+    "input_tokens": 0.0,
+    "model_calls": 0.0,
+    "optimizer_steps": 372.0,
+    "output_tokens": 0.0,
+    "train_seconds": 18.97479639800008,
+    "train_steps": 124.0
+  },
+  "development_reserved": {
+    "attempts": 17.0,
+    "eval_episodes": 35.0,
+    "optimizer_steps": 372.0,
+    "train_steps": 124.0,
+    "trials": 17.0
+  },
+  "development_status": "completed",
+  "final_status": "completed",
+  "final_trials": 9,
+  "report_scope": "protocol_test_NOT_D4RL",
+  "task": "synthetic_NOT_D4RL"
+}

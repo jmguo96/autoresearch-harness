@@ -1,0 +1,54 @@
+
+无密钥自检：合成环境＋教学决策器，训练与评价真实执行。
+{
+  "profile": "smoke",
+  "root": "/mnt/data/work-v05/demo-deployment",
+  "python": "/opt/pyvenv/bin/python",
+  "datasets": [],
+  "device_request": "auto",
+  "code_mode": "disabled",
+  "system_packages": [],
+  "installation": "reuse_existing_runtime",
+  "actions": [
+    "preflight",
+    "runtime",
+    "synthetic_fixture",
+    "data",
+    "configuration",
+    "checks",
+    "smoke"
+  ],
+  "starts_research": false,
+  "calls_llm": false,
+  "research_online": false,
+  "modifies_gpu_drivers": false,
+  "modifies_shell_profile": false,
+  "note": "Git branch refs resolve once per deployment, not globally pinned releases; record/reuse sources.lock.json"
+}
+
+== preflight ==
+
+== runtime ==
+
+== configuration ==
+[configure] running; log: /mnt/data/work-v05/demo-deployment/attempts/20260920-043254-e4534a/logs/001-configure.log
+
+== environment-checks ==
+[check] running; log: /mnt/data/work-v05/demo-deployment/attempts/20260920-043254-e4534a/logs/002-check.log
+
+== training-and-evaluation-smoke ==
+[smoke] running; log: /mnt/data/work-v05/demo-deployment/attempts/20260920-043254-e4534a/logs/003-smoke.log
+
+Deployment: ready. Report: /mnt/data/work-v05/demo-deployment/deployment.json
+CLI: /mnt/data/work-v05/demo-deployment/bin/arlab
+Research requires model configuration and explicit budget approval: /mnt/data/work-v05/demo-deployment/start-research.sh
+Source-code execution mode: disabled; never silently upgraded.
+{
+  "purpose": "installation_smoke_not_algorithm_benchmark",
+  "status": "passed",
+  "profile": "smoke",
+  "training_steps": 12,
+  "llm_calls": 0,
+  "campaign": "/mnt/data/work-v05/demo-deployment/checks/20260920-043254-e4534a/open/campaign/report.json"
+}
+这是合成环境和确定性决策器；不生成九任务研究结论。

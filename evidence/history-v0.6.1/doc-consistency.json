@@ -1,0 +1,54 @@
+{
+  "files_checked": 32,
+  "local_links_checked": 112,
+  "missing_local_targets": [],
+  "current_docs_checked": 20,
+  "known_stale_assertions": [],
+  "named_source_entries": {
+    "src/arlab/core/harness.py": [
+      "Harness",
+      "__init__",
+      "close",
+      "_initialize",
+      "_ranking",
+      "_context",
+      "_decide",
+      "_execute",
+      "run",
+      "report"
+    ],
+    "src/arlab/core/experiments.py": [
+      "limits",
+      "TrialService",
+      "__init__",
+      "_worker",
+      "_training_receipt",
+      "continue_trial",
+      "run"
+    ],
+    "src/arlab/core/context.py": [
+      "ContextConfigurationError",
+      "clip",
+      "feedback_view",
+      "ContextBuilder",
+      "__init__",
+      "build",
+      "large"
+    ],
+    "src/arlab/classroom/session.py": [
+      "validate_endpoint",
+      "model_settings",
+      "require_key",
+      "budget_preview",
+      "_deployment_contract",
+      "run_study",
+      "main"
+    ],
+    "src/arlab/audit.py": [
+      "_protocol",
+      "audit_campaign"
+    ]
+  },
+  "external_links_checked_online": false,
+  "scope": "local file targets and explicit known contradictions; not a complete semantic proof"
+}

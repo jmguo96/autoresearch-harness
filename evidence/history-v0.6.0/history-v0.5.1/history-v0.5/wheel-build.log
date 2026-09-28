@@ -1,0 +1,10 @@
+WARNING: The directory '/home/oai/.cache/pip' or its parent directory is not owned or is not writable by the current user. The cache has been disabled. Check the permissions and owner of that directory. If executing pip with sudo, you should use sudo's -H flag.
+Processing /mnt/data/autoresearch-classroom-v0.5
+  Preparing metadata (pyproject.toml): started
+  Preparing metadata (pyproject.toml): finished with status 'done'
+Building wheels for collected packages: autoresearch-lab
+  Building wheel for autoresearch-lab (pyproject.toml): started
+  Building wheel for autoresearch-lab (pyproject.toml): finished with status 'done'
+  Created wheel for autoresearch-lab: filename=autoresearch_lab-0.5.0-py3-none-any.whl size=154260 sha256=8d0573542ef62f5444b84372dd19b7c0e044609c2a794d37bcb7ba4971a6929e
+  Stored in directory: /tmp/pip-ephem-wheel-cache-50xa3e2y/wheels/35/da/da/bcc400313794040ff6fb790492121d8d4fad6f51475e8c9605
+Successfully built autoresearch-lab

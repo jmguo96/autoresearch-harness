@@ -1,0 +1,18 @@
+............................................F..F...                      [100%]
+=================================== FAILURES ===================================
+__________ test_chat_completions_protocol_ignores_separate_reasoning ___________
+tests/test_kimi_gateway.py:234: in test_chat_completions_protocol_ignores_separate_reasoning
+    reply = HTTPModel(config(model="kimi-k2.5"), transport=httpx.MockTransport(handler)).complete("rules", {}, Decision)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+src/arlab/core/models.py:122: in complete
+    raise RuntimeError(f"Model request failed ({last_error}); no fallback provider was used")
+E   RuntimeError: Model request failed (ValidationError); no fallback provider was used
+______________ test_key_is_not_in_installer_or_policy_environment ______________
+tests/test_kimi_gateway.py:260: in test_key_is_not_in_installer_or_policy_environment
+    for env in (public_environment(), policy_process_environment("docker"), policy_process_environment("trusted_local")):
+                                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   TypeError: policy_process_environment() missing 1 required positional argument: 'mode'
+=========================== short test summary info ============================
+FAILED tests/test_kimi_gateway.py::test_chat_completions_protocol_ignores_separate_reasoning - RuntimeError: Model request failed (ValidationError); no fallback provider was used
+FAILED tests/test_kimi_gateway.py::test_key_is_not_in_installer_or_policy_environment - TypeError: policy_process_environment() missing 1 required positional argument: 'mode'
+2 failed, 49 passed in 8.41s

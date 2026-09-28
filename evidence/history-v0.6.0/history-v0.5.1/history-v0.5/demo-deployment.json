@@ -1,0 +1,70 @@
+{
+  "schema": 1,
+  "run_id": "20260920-043254-e4534a",
+  "status": "ready",
+  "profile": "smoke",
+  "steps": [
+    {
+      "name": "preflight",
+      "status": "passed",
+      "started": 1789878774.6730714,
+      "finished": 1789878774.6736495
+    },
+    {
+      "name": "runtime",
+      "status": "passed",
+      "started": 1789878774.6740062,
+      "finished": 1789878774.6744704
+    },
+    {
+      "name": "configuration",
+      "status": "passed",
+      "started": 1789878774.674819,
+      "finished": 1789878776.5851557
+    },
+    {
+      "name": "environment-checks",
+      "status": "passed",
+      "started": 1789878776.5855958,
+      "finished": 1789878778.3897867
+    },
+    {
+      "name": "training-and-evaluation-smoke",
+      "status": "passed",
+      "started": 1789878778.3905694,
+      "finished": 1789878798.8290014
+    }
+  ],
+  "plan": {
+    "profile": "smoke",
+    "root": "/mnt/data/work-v05/demo-deployment",
+    "python": "/opt/pyvenv/bin/python",
+    "datasets": [],
+    "device_request": "auto",
+    "code_mode": "disabled",
+    "system_packages": [],
+    "installation": "reuse_existing_runtime",
+    "actions": [
+      "preflight",
+      "runtime",
+      "synthetic_fixture",
+      "data",
+      "configuration",
+      "checks",
+      "smoke"
+    ],
+    "starts_research": false,
+    "calls_llm": false,
+    "research_online": false,
+    "modifies_gpu_drivers": false,
+    "modifies_shell_profile": false,
+    "note": "Git branch refs resolve once per deployment, not globally pinned releases; record/reuse sources.lock.json"
+  },
+  "source_identity": "c286c106a38e46754668f9215aba14602f23111032328565c1e79721ca2c0233",
+  "disk_free_bytes": 31971168256,
+  "device": "cpu",
+  "installation": "skipped_owner_supplied_runtime",
+  "python": "/opt/pyvenv/bin/python",
+  "research_started": false,
+  "llm_calls": 0
+}

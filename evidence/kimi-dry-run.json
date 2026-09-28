@@ -1,0 +1,7 @@
+{
+  "endpoint": "http://43.143.241.66:18319/v1/models",
+  "model_selector": "auto-kimi",
+  "writes_or_installs": false,
+  "calls_model_now": false,
+  "network_request_now": false
+}

@@ -1,0 +1,5 @@
+Using Python 3.13.5 environment at: installed
+Resolved 1 package in 1ms
+Prepared 1 package in 4ms
+Installed 1 package in 5ms
+ + autoresearch-lab==0.6.2 (from file:///mnt/data/autoresearch-harness-uv/.arlab/package-validation/dist/autoresearch_lab-0.6.2-py3-none-any.whl)

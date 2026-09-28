@@ -1,0 +1,24 @@
+name: Owner-triggered project-local legacy check
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  legacy-cpu:
+    runs-on: [self-hosted, linux, x64]
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+      - name: uv-local installation (native prerequisites pre-provided; no sudo)
+        run: bash deploy.sh --yes --device cpu --code-mode disabled --smoke-steps 40
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: local-d4rl-deployment-evidence
+          include-hidden-files: true
+          path: |
+            .arlab/d4rl/deployment.json
+            .arlab/d4rl/native-check.json
+            .arlab/d4rl/attempts/
+            .arlab/d4rl/checks.json
+# Provided, not executed in this delivery environment.

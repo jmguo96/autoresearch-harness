@@ -1,0 +1,15 @@
+{
+  "identical": true,
+  "fields": {
+    "agent": true,
+    "budget": true,
+    "contract_schema": true,
+    "decision_schema": true,
+    "exploration": true,
+    "exploration_tasks": true,
+    "final": true,
+    "final_tasks": true,
+    "tool_descriptions": true
+  },
+  "scope": "Imports existing configuration types; no network, data download, training, or model calls"
+}

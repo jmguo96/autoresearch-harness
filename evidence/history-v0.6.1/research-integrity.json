@@ -1,0 +1,300 @@
+{
+  "source_archive": "autoresearch-agent-v0.6.0-readability.zip",
+  "archive_sha256": "b3f611d614a0b07ae02713a85713a49d743d26d58cc3d3da0104cb17f3e0b311",
+  "changed_existing_package_files": [
+    "src/arlab/__init__.py",
+    "src/arlab/classroom/bootstrap.py",
+    "src/arlab/classroom/session.py",
+    "src/arlab/core/models.py",
+    "src/arlab/core/schema.py",
+    "src/arlab/deployment/launch.py",
+    "src/arlab/deployment/manager.py",
+    "src/arlab/deployment/tasks.py"
+  ],
+  "unchanged_existing_package_files": [
+    "src/arlab/__main__.py",
+    "src/arlab/algorithms/__init__.py",
+    "src/arlab/algorithms/context.py",
+    "src/arlab/algorithms/guard.py",
+    "src/arlab/algorithms/loading.py",
+    "src/arlab/algorithms/policy.py",
+    "src/arlab/algorithms/policy_worker.py",
+    "src/arlab/algorithms/protocol.py",
+    "src/arlab/algorithms/provenance.py",
+    "src/arlab/algorithms/runtime.py",
+    "src/arlab/algorithms/spec.py",
+    "src/arlab/algorithms/templates.py",
+    "src/arlab/audit.py",
+    "src/arlab/classroom/__init__.py",
+    "src/arlab/classroom/constants.py",
+    "src/arlab/classroom/output.py",
+    "src/arlab/classroom/reporting.py",
+    "src/arlab/cli.py",
+    "src/arlab/core/__init__.py",
+    "src/arlab/core/branches.py",
+    "src/arlab/core/capabilities.py",
+    "src/arlab/core/checkpoints.py",
+    "src/arlab/core/config.py",
+    "src/arlab/core/context.py",
+    "src/arlab/core/diagnostics.py",
+    "src/arlab/core/experiments.py",
+    "src/arlab/core/expressions.py",
+    "src/arlab/core/harness.py",
+    "src/arlab/core/io.py",
+    "src/arlab/core/jobs.py",
+    "src/arlab/core/paging.py",
+    "src/arlab/core/panels.py",
+    "src/arlab/core/presets.py",
+    "src/arlab/core/reading.py",
+    "src/arlab/core/stats.py",
+    "src/arlab/core/store.py",
+    "src/arlab/core/teaching.py",
+    "src/arlab/core/tool_catalog.py",
+    "src/arlab/deployment/__init__.py",
+    "src/arlab/deployment/archive.py",
+    "src/arlab/deployment/common.py",
+    "src/arlab/deployment/download.py",
+    "src/arlab/research/__init__.py",
+    "src/arlab/research/extract.py",
+    "src/arlab/research/network.py",
+    "src/arlab/research/parse_worker.py",
+    "src/arlab/research/service.py",
+    "src/arlab/tasks/__init__.py",
+    "src/arlab/tasks/iql/__init__.py",
+    "src/arlab/tasks/iql/data.py",
+    "src/arlab/tasks/iql/environments.py",
+    "src/arlab/tasks/iql/evaluator.py",
+    "src/arlab/tasks/iql/networks.py",
+    "src/arlab/tasks/iql/pack.py",
+    "src/arlab/tasks/iql/prepare.py",
+    "src/arlab/tasks/iql/recipe.py",
+    "src/arlab/tasks/iql/study.py",
+    "src/arlab/tasks/iql/trainer.py",
+    "src/arlab/tasks/protocol.py",
+    "src/arlab/templates/candidate.py",
+    "src/arlab/templates/networks.py",
+    "src/arlab/worker.py"
+  ],
+  "new_modules": [
+    "src/arlab/core/endpoints.py",
+    "src/arlab/classroom/kimi.py"
+  ],
+  "protected_files": [
+    {
+      "path": "configs/README.md",
+      "unchanged": true
+    },
+    {
+      "path": "configs/agent.default.json",
+      "unchanged": true
+    },
+    {
+      "path": "configs/decision.schema.json",
+      "unchanged": true
+    },
+    {
+      "path": "configs/iql.baseline.json",
+      "unchanged": true
+    },
+    {
+      "path": "configs/iql.ess.json",
+      "unchanged": true
+    },
+    {
+      "path": "configs/open-diffusion-extraction.json",
+      "unchanged": true
+    },
+    {
+      "path": "configs/open-ensemble-mixture.json",
+      "unchanged": true
+    },
+    {
+      "path": "configs/search-iql.action.json",
+      "unchanged": true
+    },
+    {
+      "path": "src/arlab/algorithms/__init__.py",
+      "unchanged": true
+    },
+    {
+      "path": "src/arlab/algorithms/context.py",
+      "unchanged": true
+    },
+    {
+      "path": "src/arlab/algorithms/guard.py",
+      "unchanged": true
+    },
+    {
+      "path": "src/arlab/algorithms/loading.py",
+      "unchanged": true
+    },
+    {
+      "path": "src/arlab/algorithms/policy.py",
+      "unchanged": true
+    },
+    {
+      "path": "src/arlab/algorithms/policy_worker.py",
+      "unchanged": true
+    },
+    {
+      "path": "src/arlab/algorithms/protocol.py",
+      "unchanged": true
+    },
+    {
+      "path": "src/arlab/algorithms/provenance.py",
+      "unchanged": true
+    },
+    {
+      "path": "src/arlab/algorithms/runtime.py",
+      "unchanged": true
+    },
+    {
+      "path": "src/arlab/algorithms/spec.py",
+      "unchanged": true
+    },
+    {
+      "path": "src/arlab/algorithms/templates.py",
+      "unchanged": true
+    },
+    {
+      "path": "src/arlab/research/__init__.py",
+      "unchanged": true
+    },
+    {
+      "path": "src/arlab/research/extract.py",
+      "unchanged": true
+    },
+    {
+      "path": "src/arlab/research/network.py",
+      "unchanged": true
+    },
+    {
+      "path": "src/arlab/research/parse_worker.py",
+      "unchanged": true
+    },
+    {
+      "path": "src/arlab/research/service.py",
+      "unchanged": true
+    },
+    {
+      "path": "src/arlab/skills/iql.md",
+      "unchanged": true
+    },
+    {
+      "path": "src/arlab/tasks/__init__.py",
+      "unchanged": true
+    },
+    {
+      "path": "src/arlab/tasks/iql/__init__.py",
+      "unchanged": true
+    },
+    {
+      "path": "src/arlab/tasks/iql/data.py",
+      "unchanged": true
+    },
+    {
+      "path": "src/arlab/tasks/iql/environments.py",
+      "unchanged": true
+    },
+    {
+      "path": "src/arlab/tasks/iql/evaluator.py",
+      "unchanged": true
+    },
+    {
+      "path": "src/arlab/tasks/iql/networks.py",
+      "unchanged": true
+    },
+    {
+      "path": "src/arlab/tasks/iql/pack.py",
+      "unchanged": true
+    },
+    {
+      "path": "src/arlab/tasks/iql/prepare.py",
+      "unchanged": true
+    },
+    {
+      "path": "src/arlab/tasks/iql/recipe.py",
+      "unchanged": true
+    },
+    {
+      "path": "src/arlab/tasks/iql/study.py",
+      "unchanged": true
+    },
+    {
+      "path": "src/arlab/tasks/iql/trainer.py",
+      "unchanged": true
+    },
+    {
+      "path": "src/arlab/tasks/protocol.py",
+      "unchanged": true
+    },
+    {
+      "path": "src/arlab/templates/candidate.py",
+      "unchanged": true
+    },
+    {
+      "path": "src/arlab/templates/networks.py",
+      "unchanged": true
+    },
+    {
+      "path": "tests/conftest.py",
+      "unchanged": true
+    },
+    {
+      "path": "tests/test_adaptive_research.py",
+      "unchanged": true
+    },
+    {
+      "path": "tests/test_classroom.py",
+      "unchanged": true
+    },
+    {
+      "path": "tests/test_context_research.py",
+      "unchanged": true
+    },
+    {
+      "path": "tests/test_d4rl_optional.py",
+      "unchanged": true
+    },
+    {
+      "path": "tests/test_data.py",
+      "unchanged": true
+    },
+    {
+      "path": "tests/test_deploy_download.py",
+      "unchanged": true
+    },
+    {
+      "path": "tests/test_deployment.py",
+      "unchanged": true
+    },
+    {
+      "path": "tests/test_expressions.py",
+      "unchanged": true
+    },
+    {
+      "path": "tests/test_harness.py",
+      "unchanged": true
+    },
+    {
+      "path": "tests/test_iql.py",
+      "unchanged": true
+    },
+    {
+      "path": "tests/test_open_algorithms.py",
+      "unchanged": true
+    },
+    {
+      "path": "tests/test_research_tools.py",
+      "unchanged": true
+    },
+    {
+      "path": "tests/test_runtime.py",
+      "unchanged": true
+    }
+  ],
+  "non_model_schema_ast_unchanged": true,
+  "unexpected_changes": [],
+  "passed": true,
+  "scope": "Only owner entry, model connection/discovery and version/image label changed; research logic protected by byte comparison."
+}

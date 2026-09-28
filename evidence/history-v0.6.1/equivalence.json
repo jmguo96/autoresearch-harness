@@ -1,0 +1,26 @@
+{
+  "passed": true,
+  "baseline_zip_sha256": "5a300eedae9ab23a15f841db6e7eb796c2d60640fc4885129c27cd16b37a9d95",
+  "baseline_python_files": 94,
+  "package_python_files": 70,
+  "changed_python_files": [
+    "src/arlab/audit.py",
+    "src/arlab/classroom/session.py",
+    "src/arlab/core/capabilities.py",
+    "src/arlab/core/checkpoints.py",
+    "src/arlab/core/context.py",
+    "src/arlab/core/experiments.py",
+    "src/arlab/core/harness.py"
+  ],
+  "ast_equal_including_docstrings_and_types": true,
+  "ast_failures": [],
+  "missing_python_files": [],
+  "protected_files_checked": 81,
+  "protected_byte_mismatches": [],
+  "new_runtime_files": [],
+  "missing_runtime_files": [],
+  "baseline_source_sha256": "aa6417eb458772dab6d61ef2f1daaf6a2215436f6e55241253ccf674b9cd3f72",
+  "reading_edition_source_sha256": "96735c6d5a407b3ee1eb9d141cad38fa2ae98384ce6f0f3094586135dd09f4bf",
+  "scope": "Existing program syntax/constant preservation, not bytecode or timing identity",
+  "caveat": "Source hashes and traceback locations change; do not resume old campaigns under this edition"
+}

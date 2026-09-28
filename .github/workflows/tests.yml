@@ -1,0 +1,26 @@
+name: Project-local CPU tests
+on: [push, pull_request]
+permissions:
+  contents: read
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install into project with uv
+        run: |
+          bash deploy.sh --profile smoke --yes --device cpu --code-mode disabled --smoke-steps 2
+          source .arlab/smoke/env.sh
+          .arlab/smoke/tools/uv/bin/uv pip install --python .arlab/smoke/venv/bin/python \
+            -c requirements/runtime-compat.txt -e '.[dev,research]'
+      - name: Test
+        run: |
+          source .arlab/smoke/env.sh
+          .arlab/smoke/venv/bin/python -m pytest -q --junitxml=.arlab/smoke/tests.xml
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: test-results
+          include-hidden-files: true
+          path: .arlab/smoke/tests.xml
+# Workflow provided, not executed here. No hosted-runner native D4RL claim.

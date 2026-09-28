@@ -1,0 +1,80 @@
+{
+  "version": "0.6.1",
+  "edition": "Kimi laboratory gateway integration",
+  "date": "2026-09-21",
+  "source_sha256": "cb20cac2a5d1d4889f526dbc6392a971915ed240b2cd1bd7ae00c9726baf9f20",
+  "source_basis": "autoresearch-agent-v0.6.0-readability.zip",
+  "user_api_guide_sha256": "86df487e7f1476a64ceb7b3060891a50345c339856268596955b68fd4f58f053",
+  "default_model_settings": {
+    "provider": "compatible",
+    "model": "auto-kimi",
+    "base_url": "http://43.143.241.66:18319/v1",
+    "api_key_env": "NEW_API_KEY",
+    "allow_lab_http": true,
+    "max_output_tokens": 16384,
+    "timeout_seconds": 300,
+    "retries": 2,
+    "json_mode": true
+  },
+  "exact_kimi_id_in_user_guide": false,
+  "model_resolution": "GET /v1/models at student startup, select an advertised Kimi, persist exact ID",
+  "runtime": {
+    "python": "3.13.5",
+    "platform": "Linux-6.18.44-x86_64-with-glibc2.41",
+    "packages": {
+      "torch": "2.10.0+cpu",
+      "numpy": "2.3.5",
+      "pydantic": "2.13.4",
+      "httpx": "0.28.1",
+      "pytest": "9.0.2",
+      "h5py": "3.15.1",
+      "safetensors": "0.7.0"
+    }
+  },
+  "tests": {
+    "tests": 351,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 1,
+    "passed": 350
+  },
+  "new_kimi_test_cases": 54,
+  "full_test_log": "tests-kimi.log",
+  "full_junit": "tests-kimi.xml",
+  "checks": {
+    "full_regression": "passed_with_one_missing_legacy_D4RL_skip",
+    "one_key_student_session": "passed_using_explicit_synthetic_gateway_and_study_fixtures",
+    "real_loopback_HTTP_discovery": "passed_fake_key_and_model_catalogue_NOT_lab_gateway",
+    "chat_completions_schema_protocol": "passed_httpx_MockTransport_NOT_Kimi_inference",
+    "no_model_guessing_or_non_kimi_fallback": "passed",
+    "exact_ID_preserved_on_resume": "passed",
+    "key_environment_isolation_and_cleanup": "passed_including_actual_worker_process",
+    "narrow_HTTP_exception_and_redirect_refusal": "passed",
+    "preinstall_standard_library_check_api": "passed_python_minus_S_dry_run",
+    "source_architecture_and_Python310_syntax": "passed_syntax_only",
+    "research_implementation_integrity": "passed_byte_comparison_53_protected_files_and_non_ModelConfig_schema_AST",
+    "wheel_built_and_installed": "passed_no_dependencies_installed",
+    "installed_wheel_real_training": "passed_2_IQL_updates_synthetic_environment_scripted_controller",
+    "documentation_local_links": "121_checked_0_missing"
+  },
+  "research_changes": false,
+  "rsi_enabled": false,
+  "general_web_search_default": false,
+  "not_verified": [
+    "provided_lab_gateway_authentication",
+    "Kimi_actual_inference",
+    "actual_model_inventory_for_student_key",
+    "official_D4RL_data_download",
+    "D4RL_three_task_development_and_nine_task_final",
+    "MuJoCo_CUDA_Docker_execution",
+    "fresh_Python310_dependency_install",
+    "live_research_tool_requests_in_runtime"
+  ],
+  "security_notice": "User-supplied HTTP gateway is plaintext; no TLS confidentiality. Exact endpoint exception only; protected network/tunnel or HTTPS required for confidential use.",
+  "initial_test_iterations": "Early failures were invalid new test fixtures (empty plan, wrong helper signature, omitted schema defaults); fixtures corrected without relaxing production schema.",
+  "scientific_claims": {
+    "algorithm_improvement_proven": false,
+    "Kimi_agent_performance_proven": false
+  },
+  "review": "docs/review-kimi.md"
+}

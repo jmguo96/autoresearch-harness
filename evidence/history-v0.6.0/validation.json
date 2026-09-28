@@ -1,0 +1,122 @@
+{
+  "version": "0.6.0",
+  "date": "2026-09-20",
+  "source_sha256": "aa6417eb458772dab6d61ef2f1daaf6a2215436f6e55241253ccf674b9cd3f72",
+  "runtime": {
+    "python": "3.13.5",
+    "platform": "Linux-6.18.44-x86_64-with-glibc2.41",
+    "packages": {
+      "torch": "2.10.0+cpu",
+      "numpy": "2.3.5",
+      "pydantic": "2.13.4",
+      "h5py": "3.15.1",
+      "safetensors": "0.7.0",
+      "pytest": "9.0.2",
+      "gym": null,
+      "D4RL": null,
+      "mujoco-py": null
+    }
+  },
+  "tests": {
+    "tests": 297,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 1,
+    "passed": 296
+  },
+  "new_adaptive_tests": 26,
+  "final_test_log": "tests.log",
+  "final_junit": "tests.xml",
+  "protocol": "default-protocol.json",
+  "actual_checks": {
+    "full_regression": "296_passed_1_missing_D4RL_skip_no_failures",
+    "100_revisions_two_active_branches": "passed_with_real_Harness_store_and_bounded_context",
+    "continuation_exact_state_agreement": {
+      "cases": [
+        "fixed_IQL",
+        "ensemble-mixture",
+        "diffusion-extraction"
+      ],
+      "split": [
+        5,
+        11,
+        18
+      ],
+      "reference": 18,
+      "hardware": "CPU",
+      "matched": [
+        "parameters",
+        "optimizer_state",
+        "scheduler_state",
+        "RNG_state"
+      ],
+      "scope": "tiny_synthetic_training_not_D4RL_performance"
+    },
+    "trial_service_continuation": "real_worker_training_and_independent_rollout_completed",
+    "evaluation_only_expansion": "same_checkpoint_more_episodes_zero_new_training_steps",
+    "new_seed_and_environment": "fresh_training_not_checkpoint_transfer",
+    "worker_traceback_access": "real_failing_candidate_error_read_through_scoped_tool",
+    "final_retry_reserve": "injected_pretraining_failure_then_three_real_completed_synthetic_trials_16_reserved_ticks_12_useful_ticks",
+    "resource_awareness": "remaining_decisions_and_time_change_in_context",
+    "scientific_scope_guard": "controlled_fixture_all_nine_positive_and_unused_six_negative_does_not_set_method_improved_true",
+    "adaptive_workflow": {
+      "action_count": 23,
+      "algorithm_improvement_proven": false,
+      "controller": "scripted_NOT_LLM",
+      "development_actual": {
+        "eval_episodes": 35.0,
+        "evaluation_seconds": 0.16127329600067242,
+        "input_tokens": 0.0,
+        "model_calls": 0.0,
+        "optimizer_steps": 372.0,
+        "output_tokens": 0.0,
+        "train_seconds": 18.97479639800008,
+        "train_steps": 124.0
+      },
+      "development_reserved": {
+        "attempts": 17.0,
+        "eval_episodes": 35.0,
+        "optimizer_steps": 372.0,
+        "train_steps": 124.0,
+        "trials": 17.0
+      },
+      "development_status": "completed",
+      "final_status": "completed",
+      "final_trials": 9,
+      "report_scope": "protocol_test_NOT_D4RL",
+      "task": "synthetic_NOT_D4RL"
+    },
+    "source_architecture_and_syntax": "passed_70_package_python_files_6048_statements",
+    "python310_syntax": "AST_feature_version_only_NOT_python310_runtime",
+    "start_sh_dry_run": "passed_no_live_environment_install_or_research",
+    "wheel": {
+      "file": "autoresearch_lab-0.6.0-py3-none-any.whl",
+      "sha256": "cbec6a8d0bd44a9ee6b303525a0a18e317829c575d0cf048858aaceff2cb5f2f",
+      "built": true,
+      "installed": "independent_target_no_dependencies_installed",
+      "source_equal": true,
+      "installed_cli_generated_full_nine_task_protocol": true,
+      "installed_real_synthetic_demo": "completed_2_updates_1_candidate"
+    }
+  },
+  "baseline_integrity": "baseline-integrity.json",
+  "not_verified": [
+    "real_LLM_autonomous_research",
+    "D4RL_three_task_exploration_or_nine_task_confirmation",
+    "legacy_MuJoCo",
+    "fresh_Python310_dependency_install",
+    "CUDA",
+    "Docker_build_or_execution",
+    "official_dataset_download_or_live_research_apis_in_this_run"
+  ],
+  "scientific_claims": {
+    "algorithm_improvement_proven": false,
+    "agent_superiority_proven": false,
+    "runtime_speedup_measured": false
+  },
+  "history": {
+    "prior_release_evidence": "history-v0.5.1",
+    "earlier_test_iterations": "Preserved in execution-records; fixed protocol expectations and a newly discovered all-revisions teaching-context overflow before this final full regression. These are not represented as first-pass success."
+  },
+  "review": "docs/review-v0.6.md"
+}

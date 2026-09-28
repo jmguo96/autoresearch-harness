@@ -1,0 +1,68 @@
+{
+  "edition": "v0.6.0-textbook-readability",
+  "runtime_package_version": "0.6.0",
+  "date": "2026-09-20",
+  "change_scope": "comments, whitespace/expression layout, documentation, and owner-only verification utility; no runtime logic changes",
+  "baseline_zip_sha256": "5a300eedae9ab23a15f841db6e7eb796c2d60640fc4885129c27cd16b37a9d95",
+  "baseline_source_sha256": "aa6417eb458772dab6d61ef2f1daaf6a2215436f6e55241253ccf674b9cd3f72",
+  "source_sha256": "96735c6d5a407b3ee1eb9d141cad38fa2ae98384ce6f0f3094586135dd09f4bf",
+  "runtime": {
+    "python": "3.13.5",
+    "platform": "Linux-6.18.44-x86_64-with-glibc2.41",
+    "packages": {
+      "torch": "2.10.0+cpu",
+      "numpy": "2.3.5",
+      "pydantic": "2.13.4",
+      "pytest": "9.0.2",
+      "h5py": "3.15.1",
+      "safetensors": "0.7.0",
+      "gym": null,
+      "D4RL": null,
+      "mujoco-py": null
+    }
+  },
+  "tests": {
+    "tests": 297,
+    "passed": 296,
+    "skipped": 1,
+    "failures": 0,
+    "errors": 0,
+    "seconds": 225.473
+  },
+  "equivalence": {
+    "existing_python_files": 94,
+    "package_python_files": 70,
+    "changed_package_files": 7,
+    "all_ast_equal_including_strings_docstrings_and_type_comments": true,
+    "protected_files_byte_equal": true,
+    "protected_file_count": 81,
+    "default_config_and_protocol_values_equal": true,
+    "existing_test_source_changed": false,
+    "new_runtime_files": [],
+    "note": "AST equality excludes line/column positions. Raw source hash, traceback positions and CPython layout-dependent bytecode can differ."
+  },
+  "checks": {
+    "original_regression": "passed_with_missing_D4RL_skip",
+    "source_checker": "passed",
+    "shell_syntax": "passed_start_and_deploy",
+    "student_dry_run": "passed_no_live_install_or_research",
+    "researcher_prompts_and_action_schema": "unchanged_and_verified",
+    "document_links": "passed_112_local_links",
+    "known_old_document_claims": "absent_from_current_docs",
+    "verifier_negative_test": "detects_default_budget_change"
+  },
+  "new_verification_utility": "scripts/verify_readability.py, not invoked by agent or deployment",
+  "not_verified": [
+    "real_LLM_autonomous_research",
+    "D4RL_exploration_or_nine_task_results",
+    "legacy_MuJoCo",
+    "CUDA",
+    "Docker",
+    "fresh_dependency_install",
+    "live_research_APIs",
+    "student_learning_outcomes",
+    "runtime_speedup"
+  ],
+  "compatibility": "Original source byte hashes are intentionally not bypassed. Use the original code to resume old campaigns; reading edition needs a separate source/deployment root.",
+  "historical_evidence": "history-v0.6.0 is the previous delivery, not current verification"
+}

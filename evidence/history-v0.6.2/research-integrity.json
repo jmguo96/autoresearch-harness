@@ -1,0 +1,164 @@
+{
+  "baseline": "autoresearch-harness-kimi-v0.6.1.zip",
+  "changed_existing_runtime_files": [
+    "src/arlab/__init__.py",
+    "src/arlab/algorithms/policy.py",
+    "src/arlab/classroom/bootstrap.py",
+    "src/arlab/classroom/session.py",
+    "src/arlab/core/jobs.py",
+    "src/arlab/deployment/common.py",
+    "src/arlab/deployment/download.py",
+    "src/arlab/deployment/launch.py",
+    "src/arlab/deployment/manager.py",
+    "src/arlab/research/network.py"
+  ],
+  "new_runtime_files": [
+    "src/arlab/deployment/native.py",
+    "src/arlab/deployment/uv_bootstrap.py",
+    "src/arlab/deployment/local.py"
+  ],
+  "protected_files": {
+    "src/arlab/algorithms/context.py": {
+      "identical": true,
+      "sha256": "035a6e7e8bc8eb792f57146945d2a5dfb25910c8bb8ed9a0f935857b1b4542f8"
+    },
+    "src/arlab/algorithms/guard.py": {
+      "identical": true,
+      "sha256": "86b0e80b1ef98813dd6e98ef377df59421dbbe37d510369144f21a3395592a76"
+    },
+    "src/arlab/algorithms/protocol.py": {
+      "identical": true,
+      "sha256": "59d48e53f7b137372586ca670a5153727ff444c9043f4b511dea31882dfca450"
+    },
+    "src/arlab/algorithms/provenance.py": {
+      "identical": true,
+      "sha256": "22c934a915d37e8fef48572d8f2bc6043111dcb6f10a71d311617371e001efe9"
+    },
+    "src/arlab/algorithms/runtime.py": {
+      "identical": true,
+      "sha256": "11bb4b4d1a1daf152d8c2d7718907946e6709a02940ad4f53f31101696339790"
+    },
+    "src/arlab/algorithms/spec.py": {
+      "identical": true,
+      "sha256": "09e0b2a6f591091931db893d6bb535b7f6ea3c3207a3f832954a9ce2a9c0fa33"
+    },
+    "src/arlab/audit.py": {
+      "identical": true,
+      "sha256": "91107630854f44d4dfd9c1cca54d629c0baa33a7e508f5b2da2e645b2655aeab"
+    },
+    "src/arlab/classroom/constants.py": {
+      "identical": true,
+      "sha256": "0de1860cfcfac17c552e3e3c5e04d79f6e3fd033e9a6d9ccd1a7ae6c52b575b9"
+    },
+    "src/arlab/classroom/kimi.py": {
+      "identical": true,
+      "sha256": "079355b21aa388b68848d0f990dc38d2fa9368ecf27c072a85e9cb77dd65380c"
+    },
+    "src/arlab/classroom/reporting.py": {
+      "identical": true,
+      "sha256": "973a9e8e429ce832e1218bf522e43d0a012bb9213a9b167fdaa228779aa85c72"
+    },
+    "src/arlab/core/branches.py": {
+      "identical": true,
+      "sha256": "738b22dfb93c4ae2dd34de0f837bb2c417c4d96407c35c93749f64a4f19afef1"
+    },
+    "src/arlab/core/checkpoints.py": {
+      "identical": true,
+      "sha256": "eb67b14e48bf1a37711181a036752a69389a05fd35e9ef93b4d0df58c5e3395c"
+    },
+    "src/arlab/core/context.py": {
+      "identical": true,
+      "sha256": "eb3d934ee81d4195e865893a4238bc9250d897cfa7d1364ce6fdb52c429ef65a"
+    },
+    "src/arlab/core/endpoints.py": {
+      "identical": true,
+      "sha256": "b806961117d5b957d7ef92a627ddcfe45859980a49f686a39e54cf84c2e47631"
+    },
+    "src/arlab/core/experiments.py": {
+      "identical": true,
+      "sha256": "9c1509d5a87e2679877287baa525d98965ca6340c691b28a6cefb87ec1f8471e"
+    },
+    "src/arlab/core/harness.py": {
+      "identical": true,
+      "sha256": "1203e88670fe0850bf59958298cc3d35550304fafad4b7ee3686b07d1734461b"
+    },
+    "src/arlab/core/models.py": {
+      "identical": true,
+      "sha256": "b929e01177dacf6ba46bb70aa532fadf9db354094402b9ab9ebe3ad87d7a369b"
+    },
+    "src/arlab/core/panels.py": {
+      "identical": true,
+      "sha256": "555bd446b2c8b6b5c545412f17eb2e61bb4cb49f36661a3baf1a96311c87d735"
+    },
+    "src/arlab/core/stats.py": {
+      "identical": true,
+      "sha256": "b7dcb8fcaa81be5b02a22431ac752efff904f8ae6fe328e1ad856477d8f389b3"
+    },
+    "src/arlab/core/store.py": {
+      "identical": true,
+      "sha256": "0190088c5f08c13978f2f3e165d5e754978a860e252aa5550c7440f7ad37ae66"
+    },
+    "src/arlab/skills/iql.md": {
+      "identical": true,
+      "sha256": "0be4e77476b57e6daa2b0e94f847c60aa7ae190bc1ea1ab76bbd1d77f8383c5c"
+    },
+    "src/arlab/tasks/__init__.py": {
+      "identical": true,
+      "sha256": "35d0a730028186908cf6d54be4ea3755e0dc5450cbd43a598d5b20e2811e42ad"
+    },
+    "src/arlab/tasks/iql/__init__.py": {
+      "identical": true,
+      "sha256": "35d0a730028186908cf6d54be4ea3755e0dc5450cbd43a598d5b20e2811e42ad"
+    },
+    "src/arlab/tasks/iql/data.py": {
+      "identical": true,
+      "sha256": "3561da252a532853f46369f01a0a816b71759d6725afe4407eaeb68ed226420f"
+    },
+    "src/arlab/tasks/iql/environments.py": {
+      "identical": true,
+      "sha256": "ca5fdee90f7769027737d7f09336a58a7930fdbc8395611112162b1f48dd7ea9"
+    },
+    "src/arlab/tasks/iql/evaluator.py": {
+      "identical": true,
+      "sha256": "f2fcba386451d86e34456044bc99535f2410fa2fc6327a179826da78416ff203"
+    },
+    "src/arlab/tasks/iql/networks.py": {
+      "identical": true,
+      "sha256": "c46fc09d7d098c9ae0714df7766e9889bef0129d691b4402ffc2dd0b6ec13ba5"
+    },
+    "src/arlab/tasks/iql/pack.py": {
+      "identical": true,
+      "sha256": "d0e56e20d49135ddf9a6c258849a2b7ef15e1e0b9fe08b8b4debde4a591fb846"
+    },
+    "src/arlab/tasks/iql/prepare.py": {
+      "identical": true,
+      "sha256": "df4a49472bf78e83f95f267a5e330ebfffa6f239104df793e9c5042aea8fca86"
+    },
+    "src/arlab/tasks/iql/recipe.py": {
+      "identical": true,
+      "sha256": "c6f87d2781f557a1af45651deb6f50458f8dd2e3a0a3b45fe18adccf18d52f8d"
+    },
+    "src/arlab/tasks/iql/study.py": {
+      "identical": true,
+      "sha256": "962dbad921ea7c83b41cc4ca80673443048975c2f8d864b1e6ef1ec3fd7bd38d"
+    },
+    "src/arlab/tasks/iql/trainer.py": {
+      "identical": true,
+      "sha256": "e908b04ca382b3fb295cca4310e6a5375196382667c4cae44412f92789967df2"
+    },
+    "src/arlab/tasks/protocol.py": {
+      "identical": true,
+      "sha256": "ef8a102be458c45da89b44f9d73c001801f77bfcce9a39f5244bdc25ffe7542a"
+    },
+    "src/arlab/templates/candidate.py": {
+      "identical": true,
+      "sha256": "a627c54341a4296f9989f437d51bf04e582e1e2f88a4ddfab0bc583722e84d13"
+    },
+    "src/arlab/templates/networks.py": {
+      "identical": true,
+      "sha256": "658097f496ca764538cde19a9ec9edab12ca7be41d58d4ac2d2ed8a419031969"
+    }
+  },
+  "passed": true,
+  "scope": "Protected research contracts, defaults, model routing, IQL, algorithm/checkpoint logic remain byte-identical. Installer/local authorization and subprocess environments intentionally change; not full program equivalence."
+}

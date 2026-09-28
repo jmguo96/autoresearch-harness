@@ -1,0 +1,10 @@
+WARNING: The directory '/home/oai/.cache/pip' or its parent directory is not owned or is not writable by the current user. The cache has been disabled. Check the permissions and owner of that directory. If executing pip with sudo, you should use sudo's -H flag.
+Processing /mnt/data/autoresearch-harness-kimi
+  Preparing metadata (pyproject.toml): started
+  Preparing metadata (pyproject.toml): finished with status 'done'
+Building wheels for collected packages: autoresearch-lab
+  Building wheel for autoresearch-lab (pyproject.toml): started
+  Building wheel for autoresearch-lab (pyproject.toml): finished with status 'done'
+  Created wheel for autoresearch-lab: filename=autoresearch_lab-0.6.1-py3-none-any.whl size=177921 sha256=81fa917601f41577ff5c03a769029b9ad293c323c9f36cb2f02bf44cb738e3d4
+  Stored in directory: /tmp/pip-ephem-wheel-cache-l1wvya1n/wheels/ef/07/fc/2900e6e9ed35211ff0989a31b5b2d54b6a464c2c899c59f9fa
+Successfully built autoresearch-lab

@@ -1,0 +1,26 @@
+{
+  "scope": "Real CPU IQL and independent rollouts on SYNTHETIC environments only; no D4RL/LLM",
+  "research_complete": true,
+  "development_trial_counts": {
+    "complete": 3
+  },
+  "final_completed_trials": 9,
+  "development_tasks_in_final": [
+    "fixture-0",
+    "fixture-1",
+    "fixture-2"
+  ],
+  "not_used_for_search_tasks": [
+    "fixture-3",
+    "fixture-4",
+    "fixture-5",
+    "fixture-6",
+    "fixture-7",
+    "fixture-8"
+  ],
+  "steps_per_run": 2,
+  "final_training_seeds": [
+    41
+  ],
+  "baseline_retained": true
+}

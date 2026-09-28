@@ -1,0 +1,302 @@
+Building wheel...
+/opt/pyvenv/lib/python3.13/site-packages/setuptools/config/_apply_pyprojecttoml.py:82: SetuptoolsDeprecationWarning: `project.license` as a TOML table is deprecated
+!!
+
+        ********************************************************************************
+        Please use a simple string containing a SPDX expression for `project.license`. You can also use `project.license-files`. (Both options available on setuptools>=77.0.0).
+
+        By 2027-Feb-18, you need to update your project and remove deprecated calls
+        or your builds will no longer be supported.
+
+        See https://packaging.python.org/en/latest/guides/writing-pyproject-toml/#license for details.
+        ********************************************************************************
+
+!!
+  corresp(dist, value, root_dir)
+running bdist_wheel
+running build
+running build_py
+creating build/lib/arlab
+copying src/arlab/worker.py -> build/lib/arlab
+copying src/arlab/__init__.py -> build/lib/arlab
+copying src/arlab/cli.py -> build/lib/arlab
+copying src/arlab/audit.py -> build/lib/arlab
+copying src/arlab/__main__.py -> build/lib/arlab
+creating build/lib/arlab/classroom
+copying src/arlab/classroom/constants.py -> build/lib/arlab/classroom
+copying src/arlab/classroom/output.py -> build/lib/arlab/classroom
+copying src/arlab/classroom/session.py -> build/lib/arlab/classroom
+copying src/arlab/classroom/kimi.py -> build/lib/arlab/classroom
+copying src/arlab/classroom/__init__.py -> build/lib/arlab/classroom
+copying src/arlab/classroom/reporting.py -> build/lib/arlab/classroom
+copying src/arlab/classroom/bootstrap.py -> build/lib/arlab/classroom
+creating build/lib/arlab/deployment
+copying src/arlab/deployment/native.py -> build/lib/arlab/deployment
+copying src/arlab/deployment/uv_bootstrap.py -> build/lib/arlab/deployment
+copying src/arlab/deployment/local.py -> build/lib/arlab/deployment
+copying src/arlab/deployment/tasks.py -> build/lib/arlab/deployment
+copying src/arlab/deployment/__init__.py -> build/lib/arlab/deployment
+copying src/arlab/deployment/archive.py -> build/lib/arlab/deployment
+copying src/arlab/deployment/manager.py -> build/lib/arlab/deployment
+copying src/arlab/deployment/common.py -> build/lib/arlab/deployment
+copying src/arlab/deployment/download.py -> build/lib/arlab/deployment
+copying src/arlab/deployment/launch.py -> build/lib/arlab/deployment
+creating build/lib/arlab/tasks
+copying src/arlab/tasks/__init__.py -> build/lib/arlab/tasks
+copying src/arlab/tasks/protocol.py -> build/lib/arlab/tasks
+creating build/lib/arlab/core
+copying src/arlab/core/panels.py -> build/lib/arlab/core
+copying src/arlab/core/endpoints.py -> build/lib/arlab/core
+copying src/arlab/core/experiments.py -> build/lib/arlab/core
+copying src/arlab/core/paging.py -> build/lib/arlab/core
+copying src/arlab/core/context.py -> build/lib/arlab/core
+copying src/arlab/core/harness.py -> build/lib/arlab/core
+copying src/arlab/core/store.py -> build/lib/arlab/core
+copying src/arlab/core/capabilities.py -> build/lib/arlab/core
+copying src/arlab/core/jobs.py -> build/lib/arlab/core
+copying src/arlab/core/reading.py -> build/lib/arlab/core
+copying src/arlab/core/checkpoints.py -> build/lib/arlab/core
+copying src/arlab/core/expressions.py -> build/lib/arlab/core
+copying src/arlab/core/config.py -> build/lib/arlab/core
+copying src/arlab/core/diagnostics.py -> build/lib/arlab/core
+copying src/arlab/core/__init__.py -> build/lib/arlab/core
+copying src/arlab/core/presets.py -> build/lib/arlab/core
+copying src/arlab/core/teaching.py -> build/lib/arlab/core
+copying src/arlab/core/stats.py -> build/lib/arlab/core
+copying src/arlab/core/schema.py -> build/lib/arlab/core
+copying src/arlab/core/io.py -> build/lib/arlab/core
+copying src/arlab/core/branches.py -> build/lib/arlab/core
+copying src/arlab/core/models.py -> build/lib/arlab/core
+copying src/arlab/core/tool_catalog.py -> build/lib/arlab/core
+creating build/lib/arlab/algorithms
+copying src/arlab/algorithms/guard.py -> build/lib/arlab/algorithms
+copying src/arlab/algorithms/policy_worker.py -> build/lib/arlab/algorithms
+copying src/arlab/algorithms/runtime.py -> build/lib/arlab/algorithms
+copying src/arlab/algorithms/context.py -> build/lib/arlab/algorithms
+copying src/arlab/algorithms/templates.py -> build/lib/arlab/algorithms
+copying src/arlab/algorithms/spec.py -> build/lib/arlab/algorithms
+copying src/arlab/algorithms/__init__.py -> build/lib/arlab/algorithms
+copying src/arlab/algorithms/protocol.py -> build/lib/arlab/algorithms
+copying src/arlab/algorithms/loading.py -> build/lib/arlab/algorithms
+copying src/arlab/algorithms/provenance.py -> build/lib/arlab/algorithms
+copying src/arlab/algorithms/policy.py -> build/lib/arlab/algorithms
+creating build/lib/arlab/research
+copying src/arlab/research/network.py -> build/lib/arlab/research
+copying src/arlab/research/service.py -> build/lib/arlab/research
+copying src/arlab/research/__init__.py -> build/lib/arlab/research
+copying src/arlab/research/extract.py -> build/lib/arlab/research
+copying src/arlab/research/parse_worker.py -> build/lib/arlab/research
+creating build/lib/arlab/templates
+copying src/arlab/templates/candidate.py -> build/lib/arlab/templates
+copying src/arlab/templates/networks.py -> build/lib/arlab/templates
+creating build/lib/arlab/tasks/iql
+copying src/arlab/tasks/iql/trainer.py -> build/lib/arlab/tasks/iql
+copying src/arlab/tasks/iql/environments.py -> build/lib/arlab/tasks/iql
+copying src/arlab/tasks/iql/recipe.py -> build/lib/arlab/tasks/iql
+copying src/arlab/tasks/iql/__init__.py -> build/lib/arlab/tasks/iql
+copying src/arlab/tasks/iql/data.py -> build/lib/arlab/tasks/iql
+copying src/arlab/tasks/iql/study.py -> build/lib/arlab/tasks/iql
+copying src/arlab/tasks/iql/prepare.py -> build/lib/arlab/tasks/iql
+copying src/arlab/tasks/iql/networks.py -> build/lib/arlab/tasks/iql
+copying src/arlab/tasks/iql/evaluator.py -> build/lib/arlab/tasks/iql
+copying src/arlab/tasks/iql/pack.py -> build/lib/arlab/tasks/iql
+running egg_info
+creating src/autoresearch_lab.egg-info
+writing src/autoresearch_lab.egg-info/PKG-INFO
+writing dependency_links to src/autoresearch_lab.egg-info/dependency_links.txt
+writing entry points to src/autoresearch_lab.egg-info/entry_points.txt
+writing requirements to src/autoresearch_lab.egg-info/requires.txt
+writing top-level names to src/autoresearch_lab.egg-info/top_level.txt
+writing manifest file 'src/autoresearch_lab.egg-info/SOURCES.txt'
+reading manifest file 'src/autoresearch_lab.egg-info/SOURCES.txt'
+reading manifest template 'MANIFEST.in'
+adding license file 'LICENSE'
+writing manifest file 'src/autoresearch_lab.egg-info/SOURCES.txt'
+creating build/lib/arlab/skills
+copying src/arlab/skills/iql.md -> build/lib/arlab/skills
+copying src/arlab/templates/candidate.py -> build/lib/arlab/templates
+copying src/arlab/templates/networks.py -> build/lib/arlab/templates
+copying src/arlab/skills/iql.md -> build/lib/arlab/skills
+warning: build_py: byte-compiling is disabled, skipping.
+
+installing to build/bdist.linux-x86_64/wheel
+running install
+running install_lib
+creating build/bdist.linux-x86_64/wheel
+creating build/bdist.linux-x86_64/wheel/arlab
+creating build/bdist.linux-x86_64/wheel/arlab/classroom
+copying build/lib/arlab/classroom/constants.py -> build/bdist.linux-x86_64/wheel/./arlab/classroom
+copying build/lib/arlab/classroom/output.py -> build/bdist.linux-x86_64/wheel/./arlab/classroom
+copying build/lib/arlab/classroom/session.py -> build/bdist.linux-x86_64/wheel/./arlab/classroom
+copying build/lib/arlab/classroom/kimi.py -> build/bdist.linux-x86_64/wheel/./arlab/classroom
+copying build/lib/arlab/classroom/__init__.py -> build/bdist.linux-x86_64/wheel/./arlab/classroom
+copying build/lib/arlab/classroom/reporting.py -> build/bdist.linux-x86_64/wheel/./arlab/classroom
+copying build/lib/arlab/classroom/bootstrap.py -> build/bdist.linux-x86_64/wheel/./arlab/classroom
+copying build/lib/arlab/worker.py -> build/bdist.linux-x86_64/wheel/./arlab
+creating build/bdist.linux-x86_64/wheel/arlab/deployment
+copying build/lib/arlab/deployment/native.py -> build/bdist.linux-x86_64/wheel/./arlab/deployment
+copying build/lib/arlab/deployment/uv_bootstrap.py -> build/bdist.linux-x86_64/wheel/./arlab/deployment
+copying build/lib/arlab/deployment/local.py -> build/bdist.linux-x86_64/wheel/./arlab/deployment
+copying build/lib/arlab/deployment/tasks.py -> build/bdist.linux-x86_64/wheel/./arlab/deployment
+copying build/lib/arlab/deployment/__init__.py -> build/bdist.linux-x86_64/wheel/./arlab/deployment
+copying build/lib/arlab/deployment/archive.py -> build/bdist.linux-x86_64/wheel/./arlab/deployment
+copying build/lib/arlab/deployment/manager.py -> build/bdist.linux-x86_64/wheel/./arlab/deployment
+copying build/lib/arlab/deployment/common.py -> build/bdist.linux-x86_64/wheel/./arlab/deployment
+copying build/lib/arlab/deployment/download.py -> build/bdist.linux-x86_64/wheel/./arlab/deployment
+copying build/lib/arlab/deployment/launch.py -> build/bdist.linux-x86_64/wheel/./arlab/deployment
+creating build/bdist.linux-x86_64/wheel/arlab/tasks
+copying build/lib/arlab/tasks/__init__.py -> build/bdist.linux-x86_64/wheel/./arlab/tasks
+copying build/lib/arlab/tasks/protocol.py -> build/bdist.linux-x86_64/wheel/./arlab/tasks
+creating build/bdist.linux-x86_64/wheel/arlab/tasks/iql
+copying build/lib/arlab/tasks/iql/trainer.py -> build/bdist.linux-x86_64/wheel/./arlab/tasks/iql
+copying build/lib/arlab/tasks/iql/environments.py -> build/bdist.linux-x86_64/wheel/./arlab/tasks/iql
+copying build/lib/arlab/tasks/iql/recipe.py -> build/bdist.linux-x86_64/wheel/./arlab/tasks/iql
+copying build/lib/arlab/tasks/iql/__init__.py -> build/bdist.linux-x86_64/wheel/./arlab/tasks/iql
+copying build/lib/arlab/tasks/iql/data.py -> build/bdist.linux-x86_64/wheel/./arlab/tasks/iql
+copying build/lib/arlab/tasks/iql/study.py -> build/bdist.linux-x86_64/wheel/./arlab/tasks/iql
+copying build/lib/arlab/tasks/iql/prepare.py -> build/bdist.linux-x86_64/wheel/./arlab/tasks/iql
+copying build/lib/arlab/tasks/iql/networks.py -> build/bdist.linux-x86_64/wheel/./arlab/tasks/iql
+copying build/lib/arlab/tasks/iql/evaluator.py -> build/bdist.linux-x86_64/wheel/./arlab/tasks/iql
+copying build/lib/arlab/tasks/iql/pack.py -> build/bdist.linux-x86_64/wheel/./arlab/tasks/iql
+creating build/bdist.linux-x86_64/wheel/arlab/skills
+copying build/lib/arlab/skills/iql.md -> build/bdist.linux-x86_64/wheel/./arlab/skills
+copying build/lib/arlab/__init__.py -> build/bdist.linux-x86_64/wheel/./arlab
+creating build/bdist.linux-x86_64/wheel/arlab/core
+copying build/lib/arlab/core/panels.py -> build/bdist.linux-x86_64/wheel/./arlab/core
+copying build/lib/arlab/core/endpoints.py -> build/bdist.linux-x86_64/wheel/./arlab/core
+copying build/lib/arlab/core/experiments.py -> build/bdist.linux-x86_64/wheel/./arlab/core
+copying build/lib/arlab/core/paging.py -> build/bdist.linux-x86_64/wheel/./arlab/core
+copying build/lib/arlab/core/context.py -> build/bdist.linux-x86_64/wheel/./arlab/core
+copying build/lib/arlab/core/harness.py -> build/bdist.linux-x86_64/wheel/./arlab/core
+copying build/lib/arlab/core/store.py -> build/bdist.linux-x86_64/wheel/./arlab/core
+copying build/lib/arlab/core/capabilities.py -> build/bdist.linux-x86_64/wheel/./arlab/core
+copying build/lib/arlab/core/jobs.py -> build/bdist.linux-x86_64/wheel/./arlab/core
+copying build/lib/arlab/core/reading.py -> build/bdist.linux-x86_64/wheel/./arlab/core
+copying build/lib/arlab/core/checkpoints.py -> build/bdist.linux-x86_64/wheel/./arlab/core
+copying build/lib/arlab/core/expressions.py -> build/bdist.linux-x86_64/wheel/./arlab/core
+copying build/lib/arlab/core/config.py -> build/bdist.linux-x86_64/wheel/./arlab/core
+copying build/lib/arlab/core/diagnostics.py -> build/bdist.linux-x86_64/wheel/./arlab/core
+copying build/lib/arlab/core/__init__.py -> build/bdist.linux-x86_64/wheel/./arlab/core
+copying build/lib/arlab/core/presets.py -> build/bdist.linux-x86_64/wheel/./arlab/core
+copying build/lib/arlab/core/teaching.py -> build/bdist.linux-x86_64/wheel/./arlab/core
+copying build/lib/arlab/core/stats.py -> build/bdist.linux-x86_64/wheel/./arlab/core
+copying build/lib/arlab/core/schema.py -> build/bdist.linux-x86_64/wheel/./arlab/core
+copying build/lib/arlab/core/io.py -> build/bdist.linux-x86_64/wheel/./arlab/core
+copying build/lib/arlab/core/branches.py -> build/bdist.linux-x86_64/wheel/./arlab/core
+copying build/lib/arlab/core/models.py -> build/bdist.linux-x86_64/wheel/./arlab/core
+copying build/lib/arlab/core/tool_catalog.py -> build/bdist.linux-x86_64/wheel/./arlab/core
+copying build/lib/arlab/cli.py -> build/bdist.linux-x86_64/wheel/./arlab
+creating build/bdist.linux-x86_64/wheel/arlab/algorithms
+copying build/lib/arlab/algorithms/guard.py -> build/bdist.linux-x86_64/wheel/./arlab/algorithms
+copying build/lib/arlab/algorithms/policy_worker.py -> build/bdist.linux-x86_64/wheel/./arlab/algorithms
+copying build/lib/arlab/algorithms/runtime.py -> build/bdist.linux-x86_64/wheel/./arlab/algorithms
+copying build/lib/arlab/algorithms/context.py -> build/bdist.linux-x86_64/wheel/./arlab/algorithms
+copying build/lib/arlab/algorithms/templates.py -> build/bdist.linux-x86_64/wheel/./arlab/algorithms
+copying build/lib/arlab/algorithms/spec.py -> build/bdist.linux-x86_64/wheel/./arlab/algorithms
+copying build/lib/arlab/algorithms/__init__.py -> build/bdist.linux-x86_64/wheel/./arlab/algorithms
+copying build/lib/arlab/algorithms/protocol.py -> build/bdist.linux-x86_64/wheel/./arlab/algorithms
+copying build/lib/arlab/algorithms/loading.py -> build/bdist.linux-x86_64/wheel/./arlab/algorithms
+copying build/lib/arlab/algorithms/provenance.py -> build/bdist.linux-x86_64/wheel/./arlab/algorithms
+copying build/lib/arlab/algorithms/policy.py -> build/bdist.linux-x86_64/wheel/./arlab/algorithms
+copying build/lib/arlab/audit.py -> build/bdist.linux-x86_64/wheel/./arlab
+copying build/lib/arlab/__main__.py -> build/bdist.linux-x86_64/wheel/./arlab
+creating build/bdist.linux-x86_64/wheel/arlab/research
+copying build/lib/arlab/research/network.py -> build/bdist.linux-x86_64/wheel/./arlab/research
+copying build/lib/arlab/research/service.py -> build/bdist.linux-x86_64/wheel/./arlab/research
+copying build/lib/arlab/research/__init__.py -> build/bdist.linux-x86_64/wheel/./arlab/research
+copying build/lib/arlab/research/extract.py -> build/bdist.linux-x86_64/wheel/./arlab/research
+copying build/lib/arlab/research/parse_worker.py -> build/bdist.linux-x86_64/wheel/./arlab/research
+creating build/bdist.linux-x86_64/wheel/arlab/templates
+copying build/lib/arlab/templates/candidate.py -> build/bdist.linux-x86_64/wheel/./arlab/templates
+copying build/lib/arlab/templates/networks.py -> build/bdist.linux-x86_64/wheel/./arlab/templates
+warning: install_lib: byte-compiling is disabled, skipping.
+
+running install_egg_info
+Copying src/autoresearch_lab.egg-info to build/bdist.linux-x86_64/wheel/./autoresearch_lab-0.6.2-py3.13.egg-info
+running install_scripts
+creating build/bdist.linux-x86_64/wheel/autoresearch_lab-0.6.2.dist-info/WHEEL
+creating '/mnt/data/autoresearch-harness-uv/.arlab/package-validation/dist/.tmp-pf49g35r/autoresearch_lab-0.6.2-py3-none-any.whl' and adding 'build/bdist.linux-x86_64/wheel' to it
+adding 'arlab/__init__.py'
+adding 'arlab/__main__.py'
+adding 'arlab/audit.py'
+adding 'arlab/cli.py'
+adding 'arlab/worker.py'
+adding 'arlab/algorithms/__init__.py'
+adding 'arlab/algorithms/context.py'
+adding 'arlab/algorithms/guard.py'
+adding 'arlab/algorithms/loading.py'
+adding 'arlab/algorithms/policy.py'
+adding 'arlab/algorithms/policy_worker.py'
+adding 'arlab/algorithms/protocol.py'
+adding 'arlab/algorithms/provenance.py'
+adding 'arlab/algorithms/runtime.py'
+adding 'arlab/algorithms/spec.py'
+adding 'arlab/algorithms/templates.py'
+adding 'arlab/classroom/__init__.py'
+adding 'arlab/classroom/bootstrap.py'
+adding 'arlab/classroom/constants.py'
+adding 'arlab/classroom/kimi.py'
+adding 'arlab/classroom/output.py'
+adding 'arlab/classroom/reporting.py'
+adding 'arlab/classroom/session.py'
+adding 'arlab/core/__init__.py'
+adding 'arlab/core/branches.py'
+adding 'arlab/core/capabilities.py'
+adding 'arlab/core/checkpoints.py'
+adding 'arlab/core/config.py'
+adding 'arlab/core/context.py'
+adding 'arlab/core/diagnostics.py'
+adding 'arlab/core/endpoints.py'
+adding 'arlab/core/experiments.py'
+adding 'arlab/core/expressions.py'
+adding 'arlab/core/harness.py'
+adding 'arlab/core/io.py'
+adding 'arlab/core/jobs.py'
+adding 'arlab/core/models.py'
+adding 'arlab/core/paging.py'
+adding 'arlab/core/panels.py'
+adding 'arlab/core/presets.py'
+adding 'arlab/core/reading.py'
+adding 'arlab/core/schema.py'
+adding 'arlab/core/stats.py'
+adding 'arlab/core/store.py'
+adding 'arlab/core/teaching.py'
+adding 'arlab/core/tool_catalog.py'
+adding 'arlab/deployment/__init__.py'
+adding 'arlab/deployment/archive.py'
+adding 'arlab/deployment/common.py'
+adding 'arlab/deployment/download.py'
+adding 'arlab/deployment/launch.py'
+adding 'arlab/deployment/local.py'
+adding 'arlab/deployment/manager.py'
+adding 'arlab/deployment/native.py'
+adding 'arlab/deployment/tasks.py'
+adding 'arlab/deployment/uv_bootstrap.py'
+adding 'arlab/research/__init__.py'
+adding 'arlab/research/extract.py'
+adding 'arlab/research/network.py'
+adding 'arlab/research/parse_worker.py'
+adding 'arlab/research/service.py'
+adding 'arlab/skills/iql.md'
+adding 'arlab/tasks/__init__.py'
+adding 'arlab/tasks/protocol.py'
+adding 'arlab/tasks/iql/__init__.py'
+adding 'arlab/tasks/iql/data.py'
+adding 'arlab/tasks/iql/environments.py'
+adding 'arlab/tasks/iql/evaluator.py'
+adding 'arlab/tasks/iql/networks.py'
+adding 'arlab/tasks/iql/pack.py'
+adding 'arlab/tasks/iql/prepare.py'
+adding 'arlab/tasks/iql/recipe.py'
+adding 'arlab/tasks/iql/study.py'
+adding 'arlab/tasks/iql/trainer.py'
+adding 'arlab/templates/candidate.py'
+adding 'arlab/templates/networks.py'
+adding 'autoresearch_lab-0.6.2.dist-info/licenses/LICENSE'
+adding 'autoresearch_lab-0.6.2.dist-info/METADATA'
+adding 'autoresearch_lab-0.6.2.dist-info/WHEEL'
+adding 'autoresearch_lab-0.6.2.dist-info/entry_points.txt'
+adding 'autoresearch_lab-0.6.2.dist-info/top_level.txt'
+adding 'autoresearch_lab-0.6.2.dist-info/RECORD'
+removing build/bdist.linux-x86_64/wheel
+Successfully built .arlab/package-validation/dist/autoresearch_lab-0.6.2-py3-none-any.whl

@@ -1,0 +1,26 @@
+{
+  "status": "completed",
+  "model_mode": "demo",
+  "trial_counts": {
+    "complete": 1
+  },
+  "source_sha256": "cb20cac2a5d1d4889f526dbc6392a971915ed240b2cd1bd7ae00c9726baf9f20",
+  "reserved": {
+    "attempts": 1.0,
+    "eval_episodes": 3.0,
+    "optimizer_steps": 6.0,
+    "train_steps": 2.0,
+    "trials": 1.0
+  },
+  "actual_known_usage": {
+    "eval_episodes": 3.0,
+    "evaluation_seconds": 0.0336440239999547,
+    "input_tokens": 0.0,
+    "model_calls": 0.0,
+    "optimizer_steps": 6.0,
+    "output_tokens": 0.0,
+    "train_seconds": 2.818278755000051,
+    "train_steps": 2.0
+  },
+  "scope": "Real CPU IQL training and synthetic evaluation, scripted controller; no Kimi inference or D4RL."
+}

@@ -1,0 +1,8 @@
+{
+  "purpose": "installation_smoke_not_algorithm_benchmark",
+  "status": "passed",
+  "profile": "smoke",
+  "training_steps": 12,
+  "llm_calls": 0,
+  "campaign": "/mnt/data/work-v05/demo-deployment/checks/20260920-043254-e4534a/open/campaign/report.json"
+}

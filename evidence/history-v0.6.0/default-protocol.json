@@ -1,0 +1,92 @@
+{
+  "development_tasks": [
+    "halfcheetah-medium-v2",
+    "hopper-medium-replay-v2",
+    "walker2d-medium-expert-v2"
+  ],
+  "initial_training_steps_suggestion": 5000,
+  "minimum_cumulative_endpoint": 1000,
+  "schedule_horizon": 1000000,
+  "initial_eval_episodes_suggestion": 3,
+  "allowed_training_seeds": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9
+  ],
+  "confirmation_training_seeds": [
+    0,
+    1,
+    2
+  ],
+  "suggested_rungs_not_required_grid": [
+    5000,
+    20000,
+    50000,
+    100000,
+    250000,
+    1000000
+  ],
+  "max_active_branches_including_baseline": 128,
+  "max_immutable_revisions": 10000,
+  "development_hard_limits_not_scheduled_expenditure": {
+    "max_checks": 2000,
+    "max_check_ticks": 20,
+    "max_decisions": 20000,
+    "max_trials": 20000,
+    "max_attempts": 40000,
+    "max_attempts_per_trial": 3,
+    "max_train_steps": 1000000000,
+    "max_optimizer_steps": 16000000000,
+    "max_eval_episodes": 200000,
+    "max_model_calls": 40000,
+    "max_output_tokens": 160000000,
+    "max_wall_seconds": 5184000.0,
+    "worker_timeout_seconds": 21600.0
+  },
+  "final_evaluation": {
+    "cases": [
+      "halfcheetah-medium-v2",
+      "halfcheetah-medium-replay-v2",
+      "halfcheetah-medium-expert-v2",
+      "hopper-medium-v2",
+      "hopper-medium-replay-v2",
+      "hopper-medium-expert-v2",
+      "walker2d-medium-v2",
+      "walker2d-medium-replay-v2",
+      "walker2d-medium-expert-v2"
+    ],
+    "train_seeds": [
+      41,
+      43,
+      47,
+      53,
+      59
+    ],
+    "eval_seeds": [
+      9000,
+      9001,
+      9002,
+      9003,
+      9004,
+      9005,
+      9006,
+      9007,
+      9008,
+      9009
+    ],
+    "steps": 1000000,
+    "max_optimizer_steps": 8000000000,
+    "retry_reserve_fraction": 0.25,
+    "max_attempts_per_trial": 3,
+    "max_wall_seconds": 2592000.0,
+    "worker_timeout_seconds": 21600.0
+  },
+  "source_sha256": "aa6417eb458772dab6d61ef2f1daaf6a2215436f6e55241253ccf674b9cd3f72"
+}

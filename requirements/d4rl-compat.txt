@@ -1,0 +1,16 @@
+-r runtime-compat.txt
+# Legacy API; do not replace with Gymnasium or Minari.
+gym==0.23.1
+mujoco-py==2.1.2.14
+Cython==0.29.37
+# Declared D4RL dependencies plus MJRL's undeclared import dependencies.
+dm-control==1.0.16
+mujoco==3.1.1
+pybullet==3.2.7
+scipy==1.13.1
+matplotlib==3.9.4
+termcolor==2.4.0
+click==8.1.8
+
+# Install the ELF utility into the uv venv, not the operating system.
+patchelf==0.17.2.4

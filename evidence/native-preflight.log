@@ -1,0 +1,73 @@
+{
+  "profile": "d4rl",
+  "root": "/mnt/data/autoresearch-harness-uv/.arlab/native-preflight",
+  "python": "3.10.19",
+  "datasets": [
+    "hopper-medium-v2"
+  ],
+  "device_request": "cpu",
+  "code_mode": "disabled",
+  "system_packages": [],
+  "uses_sudo": false,
+  "uses_docker": false,
+  "project_boundary": "/mnt/data/autoresearch-harness-uv",
+  "managed_paths": {
+    "ARLAB_LOCAL_ROOT": "/mnt/data/autoresearch-harness-uv/.arlab/native-preflight",
+    "CPATH": "/mnt/data/autoresearch-harness-uv/.arlab/native-preflight/native/include",
+    "HOME": "/mnt/data/autoresearch-harness-uv/.arlab/native-preflight/home",
+    "XDG_CACHE_HOME": "/mnt/data/autoresearch-harness-uv/.arlab/native-preflight/cache",
+    "XDG_CONFIG_HOME": "/mnt/data/autoresearch-harness-uv/.arlab/native-preflight/config",
+    "XDG_CONFIG_DIRS": "/mnt/data/autoresearch-harness-uv/.arlab/native-preflight/config",
+    "XDG_DATA_HOME": "/mnt/data/autoresearch-harness-uv/.arlab/native-preflight/share",
+    "XDG_STATE_HOME": "/mnt/data/autoresearch-harness-uv/.arlab/native-preflight/state",
+    "XDG_RUNTIME_DIR": "/mnt/data/autoresearch-harness-uv/.arlab/native-preflight/tmp/runtime",
+    "TMPDIR": "/mnt/data/autoresearch-harness-uv/.arlab/native-preflight/tmp",
+    "TMP": "/mnt/data/autoresearch-harness-uv/.arlab/native-preflight/tmp",
+    "TEMP": "/mnt/data/autoresearch-harness-uv/.arlab/native-preflight/tmp",
+    "UV_CACHE_DIR": "/mnt/data/autoresearch-harness-uv/.arlab/native-preflight/cache/uv",
+    "UV_PYTHON_INSTALL_DIR": "/mnt/data/autoresearch-harness-uv/.arlab/native-preflight/python",
+    "UV_PYTHON_BIN_DIR": "/mnt/data/autoresearch-harness-uv/.arlab/native-preflight/python-bin",
+    "UV_PYTHON_CACHE_DIR": "/mnt/data/autoresearch-harness-uv/.arlab/native-preflight/cache/uv-python",
+    "UV_TOOL_DIR": "/mnt/data/autoresearch-harness-uv/.arlab/native-preflight/tools/environments",
+    "UV_TOOL_BIN_DIR": "/mnt/data/autoresearch-harness-uv/.arlab/native-preflight/tools/bin",
+    "UV_CREDENTIALS_DIR": "/mnt/data/autoresearch-harness-uv/.arlab/native-preflight/config/uv-credentials",
+    "PIP_CACHE_DIR": "/mnt/data/autoresearch-harness-uv/.arlab/native-preflight/cache/pip",
+    "PYTHONUSERBASE": "/mnt/data/autoresearch-harness-uv/.arlab/native-preflight/python-user",
+    "MPLCONFIGDIR": "/mnt/data/autoresearch-harness-uv/.arlab/native-preflight/cache/matplotlib",
+    "TORCH_HOME": "/mnt/data/autoresearch-harness-uv/.arlab/native-preflight/cache/torch",
+    "TORCH_EXTENSIONS_DIR": "/mnt/data/autoresearch-harness-uv/.arlab/native-preflight/cache/torch-extensions",
+    "TORCHINDUCTOR_CACHE_DIR": "/mnt/data/autoresearch-harness-uv/.arlab/native-preflight/cache/torchinductor",
+    "TRITON_CACHE_DIR": "/mnt/data/autoresearch-harness-uv/.arlab/native-preflight/cache/triton",
+    "CUDA_CACHE_PATH": "/mnt/data/autoresearch-harness-uv/.arlab/native-preflight/cache/cuda",
+    "NUMBA_CACHE_DIR": "/mnt/data/autoresearch-harness-uv/.arlab/native-preflight/cache/numba",
+    "HF_HOME": "/mnt/data/autoresearch-harness-uv/.arlab/native-preflight/cache/huggingface",
+    "HF_HUB_CACHE": "/mnt/data/autoresearch-harness-uv/.arlab/native-preflight/cache/huggingface/hub",
+    "HF_DATASETS_CACHE": "/mnt/data/autoresearch-harness-uv/.arlab/native-preflight/cache/huggingface/datasets",
+    "WANDB_DIR": "/mnt/data/autoresearch-harness-uv/.arlab/native-preflight/cache/wandb",
+    "WANDB_CACHE_DIR": "/mnt/data/autoresearch-harness-uv/.arlab/native-preflight/cache/wandb/cache",
+    "WANDB_CONFIG_DIR": "/mnt/data/autoresearch-harness-uv/.arlab/native-preflight/config/wandb",
+    "D4RL_DATASET_DIR": "/mnt/data/autoresearch-harness-uv/.arlab/native-preflight/data/raw"
+  },
+  "native_prerequisites": "read_only_check; never installed by this program",
+  "execution_notice": "本版本使用项目内 uv 虚拟环境执行 Python，不使用 Docker 或 sudo。虚拟环境只隔离依赖，不隔离文件或网络权限；生成代码仍有当前用户权限。请审阅候选代码，不要以 root 运行，也不要在含敏感资料的账号中运行未审阅代码。",
+  "installation": "uv_project_virtualenv",
+  "actions": [
+    "preflight",
+    "runtime",
+    "legacy_environment",
+    "data",
+    "configuration",
+    "checks",
+    "smoke"
+  ],
+  "starts_research": false,
+  "calls_llm": false,
+  "research_online": false,
+  "modifies_gpu_drivers": false,
+  "modifies_shell_profile": false,
+  "note": "Git branch refs resolve once per deployment, not globally pinned releases; record/reuse sources.lock.json"
+}
+
+== preflight ==
+[native-headers-and-link] running; log: /mnt/data/autoresearch-harness-uv/.arlab/native-preflight/attempts/20260921-132048-f434cd/logs/001-native-headers-and-link.log
+DEPLOY ERROR RuntimeError: Legacy MuJoCo needs working OpenMP and GL/OSMesa headers/libraries. No sudo/package-manager fallback will run. See the native-* logs. Use preinstalled libraries or supply ABI-compatible reviewed files under /mnt/data/autoresearch-harness-uv/.arlab/native-preflight/native/{include,lib,bin}; then retry.

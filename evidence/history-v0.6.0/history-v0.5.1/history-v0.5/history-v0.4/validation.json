@@ -1,0 +1,143 @@
+{
+  "version": "0.4.0",
+  "date": "2026-09-20",
+  "source_sha256": "33d415d57554304ea30306f71a3af475099ec1f50c87ef450930dc7ed543552a",
+  "runtime": {
+    "python": "3.13.5",
+    "platform": "Linux-6.18.44-x86_64-with-glibc2.41",
+    "packages": {
+      "torch": "2.10.0+cpu",
+      "numpy": "2.3.5",
+      "pydantic": "2.13.4",
+      "h5py": "3.15.1",
+      "safetensors": "0.7.0",
+      "gym": null,
+      "D4RL": null,
+      "mujoco-py": null,
+      "pypdf": "5.9.0",
+      "httpx": "0.28.1",
+      "pytest": "9.0.2"
+    }
+  },
+  "tests": {
+    "total": 229,
+    "passed": 228,
+    "skipped": 1,
+    "failures": 0,
+    "errors": 0,
+    "seconds": 85.354
+  },
+  "rsi": {
+    "removed": true,
+    "module_present": false,
+    "commands_removed": [
+      "evolve",
+      "rsi-demo",
+      "compare-improvers"
+    ]
+  },
+  "actual_execution": {
+    "source_walkthrough": {
+      "status": "completed",
+      "source_sha256": "33d415d57554304ea30306f71a3af475099ec1f50c87ef450930dc7ed543552a",
+      "scope": {
+        "d4rl_performance_claim": false,
+        "decisions": "scripted",
+        "external_sources": "offline_fixtures",
+        "training_and_rollout": "real_synthetic_environment"
+      },
+      "research_trials": {
+        "complete": 2
+      },
+      "note": "Candidate smoke check recorded separately, not ranked."
+    },
+    "installed_wheel_demo": {
+      "status": "completed",
+      "source_sha256": "33d415d57554304ea30306f71a3af475099ec1f50c87ef450930dc7ed543552a",
+      "trials": {
+        "complete": 3
+      },
+      "scope": "scripted decisions, real CPU training and synthetic rollouts; existing dependencies reused"
+    },
+    "fresh_install": "not_run: wheel --no-deps installs into an isolated directory with existing runtime dependencies",
+    "online_research": "attempted actual arxiv/crossref/github requests: failed DNS in this environment; no fabricated fallback",
+    "http_adapter_validation": "fixtures/fault injection, not successful live service requests",
+    "pdf": "real pypdf subprocess on a generated blank PDF; not scientific figure or table validation",
+    "deployment": "suite12 online-research dry-run and full tests; fresh D4RL install not run"
+  },
+  "context_scaling": "context-scaling.json: character counts on explicit ledger fixtures, not tokens or performance evidence",
+  "review_fixes": {
+    "implemented": [
+      "R01",
+      "R02",
+      "R03",
+      "R07",
+      "R08"
+    ],
+    "removed_with_RSI": [
+      "R04",
+      "R05",
+      "R06",
+      "R09"
+    ],
+    "report": "../docs/review-v0.4.md"
+  },
+  "baseline_and_open_algorithm_integrity": {
+    "src/arlab/tasks/iql/trainer.py": {
+      "identical_to_v030": true,
+      "sha256": "e238f2ce439f3bfd488871cc0a9d1c54a6ce6da58837daa0ffacf62a29036160"
+    },
+    "src/arlab/tasks/iql/networks.py": {
+      "identical_to_v030": true,
+      "sha256": "c46fc09d7d098c9ae0714df7766e9889bef0129d691b4402ffc2dd0b6ec13ba5"
+    },
+    "src/arlab/tasks/iql/data.py": {
+      "identical_to_v030": true,
+      "sha256": "3561da252a532853f46369f01a0a816b71759d6725afe4407eaeb68ed226420f"
+    },
+    "src/arlab/algorithms/context.py": {
+      "identical_to_v030": true,
+      "sha256": "035a6e7e8bc8eb792f57146945d2a5dfb25910c8bb8ed9a0f935857b1b4542f8"
+    },
+    "src/arlab/algorithms/guard.py": {
+      "identical_to_v030": true,
+      "sha256": "86b0e80b1ef98813dd6e98ef377df59421dbbe37d510369144f21a3395592a76"
+    },
+    "src/arlab/algorithms/provenance.py": {
+      "identical_to_v030": true,
+      "sha256": "22c934a915d37e8fef48572d8f2bc6043111dcb6f10a71d311617371e001efe9"
+    },
+    "src/arlab/algorithms/runtime.py": {
+      "identical_to_v030": true,
+      "sha256": "0310bd55abe48dedea059129bd48f1ffae91af2b75abfe6464b7b175dad92fad"
+    },
+    "src/arlab/algorithms/protocol.py": {
+      "identical_to_v030": true,
+      "sha256": "59d48e53f7b137372586ca670a5153727ff444c9043f4b511dea31882dfca450"
+    }
+  },
+  "packaging": {
+    "wheel": "autoresearch_lab-0.4.0-py3-none-any.whl",
+    "sha256": "24174d872b396bfa65b941637baaddef0559caf7b554ed2a368e25f52fb727cd",
+    "wheel_python_matches_source": true
+  },
+  "unverified": [
+    "fresh-machine D4RL/MuJoCo install and official dataset download",
+    "D4RL benchmark performance",
+    "CUDA",
+    "Docker build and runtime",
+    "live LLM autonomous research",
+    "live arXiv/Crossref/GitHub successful response",
+    "Brave authenticated search",
+    "model quality or token-cost improvement",
+    "arbitrary-code formal in-sample or security guarantee"
+  ],
+  "bounds": [
+    "characters are not tokenizer tokens",
+    "same-user same-host arXiv lock, not multi-machine limiter",
+    "no browser JavaScript/OCR/table-vision",
+    "existence of evidence references is not semantic claim verification",
+    "trusted_local is not a filesystem sandbox",
+    "source hash covers Python implementation; preserve configuration, skill and dependency metadata too"
+  ]
+}

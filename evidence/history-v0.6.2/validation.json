@@ -1,0 +1,65 @@
+{
+  "version": "0.6.2",
+  "edition": "project_local_uv",
+  "date": "2026-09-21",
+  "source_sha256": "65abc0958eb55b4106143db13cd289b36b1fc4ae97cadab5c0ecc709c2bacdf3",
+  "runtime": {
+    "python": "3.13.5",
+    "platform": "Linux-6.18.44-x86_64-with-glibc2.41",
+    "effective_uid": 0,
+    "packages": {
+      "torch": "2.10.0+cpu",
+      "numpy": "2.3.5",
+      "pydantic": "2.13.4",
+      "pytest": "9.0.2",
+      "h5py": "3.15.1",
+      "safetensors": "0.7.0"
+    },
+    "uv": "0.10.0"
+  },
+  "tests": {
+    "tests": 382,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 1,
+    "passed": 381
+  },
+  "new_local_tests": 31,
+  "actual_checks": {
+    "real_uv_new_venv_install": "passed_local_fixture_wheel_existing_python313_no_system_site_packages",
+    "real_project_uv_build_install": "passed_see_uv-package-validation.json_no_dependencies_installed_in_fresh_venv",
+    "oneclick_synthetic_smoke": "passed_in_full_pytest_explicit_reused_existing_runtime_actual_training_and_rollout",
+    "worker_cache_and_credential_boundary": "passed_actual_subprocess_test",
+    "outside_path_and_symlink_rejection": "passed",
+    "start_and_key_dry_runs": "passed_no_deployment_created",
+    "native_d4rl_preflight": "correctly_stopped_missing_GL_osmesa_h_without_system_install",
+    "syntax_python310": "75_package_files_parsed_only_not_python310_runtime",
+    "shell_syntax": "passed",
+    "science_code_integrity": "35_files_byte_identical_to_v061_see_research-integrity.json"
+  },
+  "managed_environment": "deployment/local.py; applies to managed start.sh/bin/arlab processes, not arbitrary hostile Python",
+  "not_verified": [
+    "fresh_online_python310_dependency_install",
+    "live_uv_wheel_download",
+    "complete_official_dataset_download",
+    "legacy_mujoco_build_and_D4RL_rollout",
+    "CUDA",
+    "real_Kimi_API",
+    "ordinary_unprivileged_course_account_full_install",
+    "provided_CI_workflows"
+  ],
+  "limitations": [
+    "Venv is not a filesystem/network sandbox",
+    "Native libraries are checked, never globally installed",
+    "No full transitive hash lock",
+    "No guarantee arbitrary third-party code obeys cache environment",
+    "Existing API HTTP segment remains unencrypted",
+    "Local rate limit lock does not coordinate other projects"
+  ],
+  "earlier_runs": "two synchronous tool calls interrupted_before_completion; isolated deployment1pass; final full suite completed on frozen source",
+  "scientific_claims": {
+    "algorithm_improvement_proven": false,
+    "D4RL_results_produced": false
+  },
+  "review": "docs/review-uv-local.md"
+}

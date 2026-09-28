@@ -1,0 +1,230 @@
+{
+  "schema": 1,
+  "status": "completed",
+  "task": "iql",
+  "model_mode": "demo",
+  "system": "agent-34c571287152fc1bf045",
+  "source_sha256": "3b07c4ee234e7ca097324900857b4be1c0015e0aeddbafc9f7487887e4463a93",
+  "contract_sha256": "5527b76cc9f65229596a7ee6848b8ecb5f3ffe6aed89492a591bfcbce6b90d53",
+  "runtime": {
+    "packages": {
+      "D4RL": null,
+      "gym": null,
+      "h5py": "3.15.1",
+      "mujoco-py": null,
+      "numpy": "2.3.5",
+      "pydantic": "2.13.4",
+      "safetensors": "0.7.0",
+      "torch": "2.10.0+cpu"
+    },
+    "platform": "Linux-6.18.44-x86_64-with-glibc2.41",
+    "python": "3.13.5"
+  },
+  "trial_counts": {
+    "complete": 1
+  },
+  "memory_count": 2,
+  "reserved": {
+    "eval_episodes": 3.0,
+    "optimizer_steps": 6.0,
+    "train_steps": 2.0,
+    "trials": 1.0
+  },
+  "actual_known_usage": {
+    "eval_episodes": 3.0,
+    "evaluation_seconds": 0.011917047999986607,
+    "input_tokens": 0.0,
+    "model_calls": 0.0,
+    "optimizer_steps": 6.0,
+    "output_tokens": 0.0,
+    "train_seconds": 0.6414340350002021,
+    "train_steps": 2.0
+  },
+  "final_horizon": 2,
+  "candidates": {
+    "c-84e966838be2f3ec8a32": {
+      "name": "iql",
+      "tasks": {
+        "lq-dev": {
+          "mean": -11.188508058909804,
+          "lower": null,
+          "upper": null,
+          "n": 1
+        }
+      },
+      "macro_mean": -11.188508058909804,
+      "iqm": -11.188508058909804,
+      "note": "Intervals resample independent training seeds, not episodes. IQM is over task means.",
+      "vs_baseline": {
+        "status": "insufficient_evidence",
+        "pairs": 1,
+        "complete": true,
+        "contract_panel_complete": true,
+        "matched_observed_cells": true,
+        "coverage": {
+          "expected": 1,
+          "baseline": 1,
+          "candidate": 1,
+          "missing_baseline": [],
+          "missing_candidate": []
+        },
+        "macro_delta": 0.0,
+        "lower": null,
+        "upper": null,
+        "per_task_delta": {
+          "lq-dev": 0.0
+        },
+        "warning": "Exploratory comparison; adaptive search and repeated tests require independent confirmation."
+      }
+    }
+  },
+  "result_scope": "development_selection_not_final_confirmation",
+  "final_evaluation_required": false,
+  "final_conclusion_available": false,
+  "frozen": {
+    "candidate": "c-84e966838be2f3ec8a32",
+    "conclusion": "Selected from visible matched development trials; independent evaluation is still required.",
+    "contract_sha256": "5527b76cc9f65229596a7ee6848b8ecb5f3ffe6aed89492a591bfcbce6b90d53",
+    "recipe": {
+      "actor_lr": 0.0003,
+      "actor_weight": {
+        "args": [
+          {
+            "args": [
+              {
+                "args": [
+                  {
+                    "var": "beta"
+                  },
+                  {
+                    "var": "adv"
+                  }
+                ],
+                "op": "mul"
+              },
+              {
+                "const": -60
+              },
+              {
+                "args": [
+                  {
+                    "var": "weight_cap"
+                  }
+                ],
+                "op": "log"
+              }
+            ],
+            "op": "clip"
+          }
+        ],
+        "op": "exp"
+      },
+      "batch_size": 64,
+      "beta": 3.0,
+      "beta_max": 20.0,
+      "beta_min": 0.05,
+      "beta_update": {
+        "var": "beta"
+      },
+      "controller_rate": 0.02,
+      "critic_lr": 0.0003,
+      "discount": 0.99,
+      "expectile": 0.7,
+      "gradient_clip": 0.0,
+      "hidden_dims": [
+        32,
+        32
+      ],
+      "name": "iql",
+      "normalize_weights": false,
+      "q_loss": {
+        "args": [
+          {
+            "const": 0.5
+          },
+          {
+            "args": [
+              {
+                "args": [
+                  {
+                    "var": "td1"
+                  }
+                ],
+                "op": "square"
+              },
+              {
+                "args": [
+                  {
+                    "var": "td2"
+                  }
+                ],
+                "op": "square"
+              }
+            ],
+            "op": "add"
+          }
+        ],
+        "op": "mul"
+      },
+      "target_ess": 0.5,
+      "target_rate": 0.005,
+      "value_loss": {
+        "args": [
+          {
+            "args": [
+              {
+                "args": [
+                  {
+                    "var": "delta"
+                  },
+                  {
+                    "const": 0
+                  }
+                ],
+                "op": "lt"
+              },
+              {
+                "args": [
+                  {
+                    "const": 1
+                  },
+                  {
+                    "var": "expectile"
+                  }
+                ],
+                "op": "sub"
+              },
+              {
+                "var": "expectile"
+              }
+            ],
+            "op": "where"
+          },
+          {
+            "args": [
+              {
+                "var": "delta"
+              }
+            ],
+            "op": "square"
+          }
+        ],
+        "op": "mul"
+      },
+      "value_lr": 0.0003,
+      "weight_cap": 100.0
+    },
+    "source_sha256": "3b07c4ee234e7ca097324900857b4be1c0015e0aeddbafc9f7487887e4463a93",
+    "system": "agent-34c571287152fc1bf045"
+  },
+  "held_out_results_visible_to_researcher": false,
+  "research_sources": [],
+  "rsi_enabled": false,
+  "limitations": [
+    "Demo decisions are scripted; training and rollout evaluation are real.",
+    "Synthetic control results are not D4RL benchmark results.",
+    "Adaptive development-set comparisons are exploratory, not confirmatory.",
+    "Known usage excludes work lost before a checkpoint; reservations conservatively charge it.",
+    "Equal ticks need not mean equal optimizer steps, FLOPs, or policy inference cost."
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "src/arlab/tasks/iql/networks.py": {
+    "unchanged_from_v051": true
+  },
+  "src/arlab/tasks/iql/data.py": {
+    "unchanged_from_v051": true
+  },
+  "src/arlab/tasks/iql/recipe.py": {
+    "unchanged_from_v051": true
+  },
+  "src/arlab/algorithms/guard.py": {
+    "unchanged_from_v051": true
+  },
+  "src/arlab/algorithms/provenance.py": {
+    "unchanged_from_v051": true
+  },
+  "src/arlab/algorithms/context.py": {
+    "unchanged_from_v051": true
+  },
+  "IQLTrainer.update": {
+    "AST_unchanged_from_v051": true
+  },
+  "wrapper_change": "Training wrappers deliberately changed for fixed-horizon checkpoint continuation; not a byte-identical trainer file.",
+  "wheel_matches_source": true,
+  "wheel_mismatches": []
+}

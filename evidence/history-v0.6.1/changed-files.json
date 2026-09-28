@@ -1,0 +1,146 @@
+[
+  {
+    "path": "README.md",
+    "status": "modified"
+  },
+  {
+    "path": "configs/README.md",
+    "status": "modified"
+  },
+  {
+    "path": "docs/README-v0.4-history.md",
+    "status": "modified"
+  },
+  {
+    "path": "docs/README-v0.5.1-history.md",
+    "status": "modified"
+  },
+  {
+    "path": "docs/README.md",
+    "status": "added"
+  },
+  {
+    "path": "docs/architecture.md",
+    "status": "modified"
+  },
+  {
+    "path": "docs/context-design.md",
+    "status": "modified"
+  },
+  {
+    "path": "docs/d4rl.md",
+    "status": "modified"
+  },
+  {
+    "path": "docs/deployment-review.md",
+    "status": "modified"
+  },
+  {
+    "path": "docs/deployment.md",
+    "status": "modified"
+  },
+  {
+    "path": "docs/driver-example.md",
+    "status": "modified"
+  },
+  {
+    "path": "docs/glossary.md",
+    "status": "added"
+  },
+  {
+    "path": "docs/migration-0.2.md",
+    "status": "modified"
+  },
+  {
+    "path": "docs/migration-0.3.md",
+    "status": "modified"
+  },
+  {
+    "path": "docs/migration-0.4.md",
+    "status": "modified"
+  },
+  {
+    "path": "docs/migration-0.5.1.md",
+    "status": "modified"
+  },
+  {
+    "path": "docs/migration-0.6.md",
+    "status": "modified"
+  },
+  {
+    "path": "docs/migration-readability.md",
+    "status": "added"
+  },
+  {
+    "path": "docs/open-algorithm-api.md",
+    "status": "modified"
+  },
+  {
+    "path": "docs/quickstart.md",
+    "status": "modified"
+  },
+  {
+    "path": "docs/reading-guide.md",
+    "status": "added"
+  },
+  {
+    "path": "docs/references.md",
+    "status": "modified"
+  },
+  {
+    "path": "docs/research-tools.md",
+    "status": "modified"
+  },
+  {
+    "path": "docs/review-readability.md",
+    "status": "added"
+  },
+  {
+    "path": "docs/review-v0.4.md",
+    "status": "modified"
+  },
+  {
+    "path": "docs/review-v0.5.1.md",
+    "status": "modified"
+  },
+  {
+    "path": "docs/review-v0.5.md",
+    "status": "modified"
+  },
+  {
+    "path": "docs/review-v0.6.md",
+    "status": "modified"
+  },
+  {
+    "path": "scripts/verify_readability.py",
+    "status": "added"
+  },
+  {
+    "path": "src/arlab/audit.py",
+    "status": "modified"
+  },
+  {
+    "path": "src/arlab/classroom/session.py",
+    "status": "modified"
+  },
+  {
+    "path": "src/arlab/core/capabilities.py",
+    "status": "modified"
+  },
+  {
+    "path": "src/arlab/core/checkpoints.py",
+    "status": "modified"
+  },
+  {
+    "path": "src/arlab/core/context.py",
+    "status": "modified"
+  },
+  {
+    "path": "src/arlab/core/experiments.py",
+    "status": "modified"
+  },
+  {
+    "path": "src/arlab/core/harness.py",
+    "status": "modified"
+  }
+]

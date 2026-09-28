@@ -1,0 +1,82 @@
+{
+  "src/arlab/algorithms/__init__.py": {
+    "unchanged": true,
+    "sha256": "185ef8042fe26173b220c37288c3be16525b60508ad42379e91ba82089f82ab8"
+  },
+  "src/arlab/algorithms/context.py": {
+    "unchanged": true,
+    "sha256": "035a6e7e8bc8eb792f57146945d2a5dfb25910c8bb8ed9a0f935857b1b4542f8"
+  },
+  "src/arlab/algorithms/guard.py": {
+    "unchanged": true,
+    "sha256": "86b0e80b1ef98813dd6e98ef377df59421dbbe37d510369144f21a3395592a76"
+  },
+  "src/arlab/algorithms/loading.py": {
+    "unchanged": true,
+    "sha256": "aa13d9685747e707f4768e287bae2b61b08cc8c5b78268ad8921759b5b429e45"
+  },
+  "src/arlab/algorithms/policy.py": {
+    "unchanged": true,
+    "sha256": "20d94b3598fad0cd5ef1db48d83e07ed08a974212d1aaf7e2c236b0a8eb53fb9"
+  },
+  "src/arlab/algorithms/policy_worker.py": {
+    "unchanged": true,
+    "sha256": "a85dce7300b8318a02b161df122a0f467ee81d0caedb04a722628d2438a95240"
+  },
+  "src/arlab/algorithms/protocol.py": {
+    "unchanged": true,
+    "sha256": "59d48e53f7b137372586ca670a5153727ff444c9043f4b511dea31882dfca450"
+  },
+  "src/arlab/algorithms/provenance.py": {
+    "unchanged": true,
+    "sha256": "22c934a915d37e8fef48572d8f2bc6043111dcb6f10a71d311617371e001efe9"
+  },
+  "src/arlab/algorithms/runtime.py": {
+    "unchanged": true,
+    "sha256": "0310bd55abe48dedea059129bd48f1ffae91af2b75abfe6464b7b175dad92fad"
+  },
+  "src/arlab/algorithms/spec.py": {
+    "unchanged": true,
+    "sha256": "09e0b2a6f591091931db893d6bb535b7f6ea3c3207a3f832954a9ce2a9c0fa33"
+  },
+  "src/arlab/algorithms/templates.py": {
+    "unchanged": true,
+    "sha256": "2cb0556fade9ae99c6f82ab601224795c2974ff22830b2a43c478cd5f9b4b6e1"
+  },
+  "src/arlab/tasks/iql/__init__.py": {
+    "unchanged": true,
+    "sha256": "35d0a730028186908cf6d54be4ea3755e0dc5450cbd43a598d5b20e2811e42ad"
+  },
+  "src/arlab/tasks/iql/data.py": {
+    "unchanged": true,
+    "sha256": "3561da252a532853f46369f01a0a816b71759d6725afe4407eaeb68ed226420f"
+  },
+  "src/arlab/tasks/iql/environments.py": {
+    "unchanged": true,
+    "sha256": "ca5fdee90f7769027737d7f09336a58a7930fdbc8395611112162b1f48dd7ea9"
+  },
+  "src/arlab/tasks/iql/evaluator.py": {
+    "unchanged": true,
+    "sha256": "f2fcba386451d86e34456044bc99535f2410fa2fc6327a179826da78416ff203"
+  },
+  "src/arlab/tasks/iql/networks.py": {
+    "unchanged": true,
+    "sha256": "c46fc09d7d098c9ae0714df7766e9889bef0129d691b4402ffc2dd0b6ec13ba5"
+  },
+  "src/arlab/tasks/iql/pack.py": {
+    "unchanged": true,
+    "sha256": "d0e56e20d49135ddf9a6c258849a2b7ef15e1e0b9fe08b8b4debde4a591fb846"
+  },
+  "src/arlab/tasks/iql/prepare.py": {
+    "unchanged": true,
+    "sha256": "df4a49472bf78e83f95f267a5e330ebfffa6f239104df793e9c5042aea8fca86"
+  },
+  "src/arlab/tasks/iql/recipe.py": {
+    "unchanged": true,
+    "sha256": "c6f87d2781f557a1af45651deb6f50458f8dd2e3a0a3b45fe18adccf18d52f8d"
+  },
+  "src/arlab/tasks/iql/trainer.py": {
+    "unchanged": true,
+    "sha256": "e238f2ce439f3bfd488871cc0a9d1c54a6ce6da58837daa0ffacf62a29036160"
+  }
+}

@@ -1,0 +1,2 @@
+# Fixed bootstrap version; downloads still require trusted PyPI/TLS.
+uv==0.10.0

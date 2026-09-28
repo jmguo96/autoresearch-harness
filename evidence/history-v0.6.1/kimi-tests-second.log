@@ -1,0 +1,47 @@
+............................................F.........                   [100%]
+=================================== FAILURES ===================================
+__________ test_chat_completions_protocol_ignores_separate_reasoning ___________
+tests/test_kimi_gateway.py:235: in test_chat_completions_protocol_ignores_separate_reasoning
+    assert reply.payload == decision and reply.input_tokens == 12
+E   AssertionError: assert ({'action': {'...y': 'fixture'} == {'action': {'...y': 'fixture'}
+E     
+E     Omitting 1 identical items, use -vv to show
+E     Differing items:
+E     {'action': {'id': 'iql', 'kind': 'inspect', 'max_characters': 5000, 'max_lines': 60, ...}} != {'action': {'id': 'iql', 'kind': 'inspect', 'target': 'skill'}}
+E     
+E     Full diff:
+E       {
+E           'action': {
+E               'id': 'iql',
+E               'kind': 'inspect',
+E     +         'max_characters': 5000,
+E     +         'max_lines': 60,
+E     +         'offset': 0,
+E     +         'path': '',
+E     +         'start_line': 1,
+E               'target': 'skill',
+E           },
+E           'summary': 'fixture',
+E       })
+=========================== short test summary info ============================
+FAILED tests/test_kimi_gateway.py::test_chat_completions_protocol_ignores_separate_reasoning - AssertionError: assert ({'action': {'...y': 'fixture'} == {'action': {'...y': 'fixture'}
+  
+  Omitting 1 identical items, use -vv to show
+  Differing items:
+  {'action': {'id': 'iql', 'kind': 'inspect', 'max_characters': 5000, 'max_lines': 60, ...}} != {'action': {'id': 'iql', 'kind': 'inspect', 'target': 'skill'}}
+  
+  Full diff:
+    {
+        'action': {
+            'id': 'iql',
+            'kind': 'inspect',
+  +         'max_characters': 5000,
+  +         'max_lines': 60,
+  +         'offset': 0,
+  +         'path': '',
+  +         'start_line': 1,
+            'target': 'skill',
+        },
+        'summary': 'fixture',
+    })
+1 failed, 53 passed in 5.51s

@@ -1,0 +1,38 @@
+{
+  "src/arlab/tasks/iql/trainer.py": {
+    "identical_to_v040": true,
+    "sha256": "e238f2ce439f3bfd488871cc0a9d1c54a6ce6da58837daa0ffacf62a29036160"
+  },
+  "src/arlab/tasks/iql/networks.py": {
+    "identical_to_v040": true,
+    "sha256": "c46fc09d7d098c9ae0714df7766e9889bef0129d691b4402ffc2dd0b6ec13ba5"
+  },
+  "src/arlab/tasks/iql/data.py": {
+    "identical_to_v040": true,
+    "sha256": "3561da252a532853f46369f01a0a816b71759d6725afe4407eaeb68ed226420f"
+  },
+  "src/arlab/tasks/iql/evaluator.py": {
+    "identical_to_v040": true,
+    "sha256": "f2fcba386451d86e34456044bc99535f2410fa2fc6327a179826da78416ff203"
+  },
+  "src/arlab/algorithms/runtime.py": {
+    "identical_to_v040": true,
+    "sha256": "0310bd55abe48dedea059129bd48f1ffae91af2b75abfe6464b7b175dad92fad"
+  },
+  "src/arlab/algorithms/guard.py": {
+    "identical_to_v040": true,
+    "sha256": "86b0e80b1ef98813dd6e98ef377df59421dbbe37d510369144f21a3395592a76"
+  },
+  "src/arlab/algorithms/provenance.py": {
+    "identical_to_v040": true,
+    "sha256": "22c934a915d37e8fef48572d8f2bc6043111dcb6f10a71d311617371e001efe9"
+  },
+  "src/arlab/algorithms/context.py": {
+    "identical_to_v040": true,
+    "sha256": "035a6e7e8bc8eb792f57146945d2a5dfb25910c8bb8ed9a0f935857b1b4542f8"
+  },
+  "src/arlab/algorithms/protocol.py": {
+    "identical_to_v040": true,
+    "sha256": "59d48e53f7b137372586ca670a5153727ff444c9043f4b511dea31882dfca450"
+  }
+}

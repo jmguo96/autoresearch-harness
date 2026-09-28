@@ -1,0 +1,20 @@
+{
+  "scope": "real_uv_offline_build_and_fresh_venv_install_using_existing_Python_NOT_target_legacy_stack",
+  "source_python": "3.13.5 (main, Jul 15 2026, 20:25:40) [GCC 14.2.0]",
+  "downloaded_dependencies": false,
+  "reused_host_python_for_build": true,
+  "uv_version": "uv 0.10.0",
+  "installed": {
+    "version": "0.6.2",
+    "prefix": "/mnt/data/autoresearch-harness-uv/.arlab/package-validation/installed",
+    "base_prefix": "/usr",
+    "module": "/mnt/data/autoresearch-harness-uv/.arlab/package-validation/installed/lib/python3.13/site-packages/arlab/__init__.py",
+    "user_site_enabled": false
+  },
+  "wheel": "/mnt/data/autoresearch-harness-uv/.arlab/package-validation/dist/autoresearch_lab-0.6.2-py3-none-any.whl",
+  "wheel_sha256": "173610f6fe93d8b6d8a71722e8a5f1087a6419049dfdc0b7e812cab307ea6091",
+  "include_system_site_packages": false,
+  "wheel_code_mismatches": [],
+  "passed": true,
+  "documentation_final_build": true
+}

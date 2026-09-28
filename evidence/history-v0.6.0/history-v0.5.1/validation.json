@@ -1,0 +1,151 @@
+{
+  "version": "0.5.1",
+  "date": "2026-09-20",
+  "source_sha256": "89c1246dd381859250a622ae0775c71afb70039b048ecda72a87b6114bdd4b59",
+  "runtime": {
+    "python": "3.13.5",
+    "platform": "Linux-6.18.44-x86_64-with-glibc2.41",
+    "packages": {
+      "torch": "2.10.0+cpu",
+      "numpy": "2.3.5",
+      "pydantic": "2.13.4",
+      "h5py": "3.15.1",
+      "safetensors": "0.7.0",
+      "gym": null,
+      "D4RL": null,
+      "mujoco-py": null
+    }
+  },
+  "tests": {
+    "tests": 271,
+    "passed": 270,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 1,
+    "scope": "Full source regression suite, real small CPU synthetic runs, explicitly marked ledger/HTTP fixtures; no live D4RL"
+  },
+  "new_test_cases": 16,
+  "default_protocol": {
+    "exploration_tasks": [
+      "halfcheetah-medium-v2",
+      "hopper-medium-replay-v2",
+      "walker2d-medium-expert-v2"
+    ],
+    "development_environments": [
+      "halfcheetah",
+      "hopper",
+      "walker2d"
+    ],
+    "development_data_regimes": [
+      "medium",
+      "medium-replay",
+      "medium-expert"
+    ],
+    "selection_note": "Fixed diagonal coverage, not an optimal or factorial experimental design",
+    "development_train_seeds": [
+      0,
+      1,
+      2
+    ],
+    "development_rungs": [
+      50000,
+      250000,
+      1000000
+    ],
+    "development_cells_per_method_per_rung": 9,
+    "final_tasks": [
+      "halfcheetah-medium-v2",
+      "halfcheetah-medium-replay-v2",
+      "halfcheetah-medium-expert-v2",
+      "hopper-medium-v2",
+      "hopper-medium-replay-v2",
+      "hopper-medium-expert-v2",
+      "walker2d-medium-v2",
+      "walker2d-medium-replay-v2",
+      "walker2d-medium-expert-v2"
+    ],
+    "final_train_seeds": [
+      41,
+      43,
+      47,
+      53,
+      59
+    ],
+    "final_updates_per_run": 1000000,
+    "final_eval_episodes_per_run": 10,
+    "final_runs_for_two_different_methods": 90,
+    "final_runs_when_IQL_retained": 45,
+    "development_tasks_retested": 3,
+    "not_used_for_this_search_tasks": 6,
+    "RSI": false,
+    "literature_extra_api_key": false,
+    "general_web_search": false
+  },
+  "actual_checks": {
+    "default_entry_dry_run": "passed; mixed-distribution task IDs and all nine final tasks; no deployment created",
+    "three_task_missing_cell_and_negative_result": "passed; all three missing-case positions for baseline and selected, using ledger fixtures",
+    "all_medium_and_single_task_rejection": "passed",
+    "complete_equal_weight_panel_and_check_exclusion": "passed on controlled ledger",
+    "three_to_nine_actual_execution": {
+      "scope": "Real CPU IQL and independent rollouts on SYNTHETIC environments only; no D4RL/LLM",
+      "research_complete": true,
+      "development_trial_counts": {
+        "complete": 3
+      },
+      "final_completed_trials": 9,
+      "development_tasks_in_final": [
+        "fixture-0",
+        "fixture-1",
+        "fixture-2"
+      ],
+      "not_used_for_search_tasks": [
+        "fixture-3",
+        "fixture-4",
+        "fixture-5",
+        "fixture-6",
+        "fixture-7",
+        "fixture-8"
+      ],
+      "steps_per_run": 2,
+      "final_training_seeds": [
+        41
+      ],
+      "baseline_retained": true
+    },
+    "deployment_split_change_preserves_old_contract": "passed using an explicit config fixture",
+    "budget_preview": "108 trial cells / 46,800,000 ticks / 1,080 rollout episodes for all four methods at all three development rungs; illustration, not a mandatory schedule",
+    "source_architecture_check": {
+      "python_files": 66,
+      "statements": 5638,
+      "errors": [],
+      "scope": "syntax and explicit architecture checks only"
+    },
+    "IQL_open_algorithms_and_dataset_transform": "Unchanged vs v0.5.0; see baseline-integrity.json",
+    "wheel_install_and_preset_validation": "passed without downloading dependencies",
+    "Python310_syntax": "passed ast feature_version check; NOT a Python 3.10 runtime execution"
+  },
+  "not_verified": [
+    "fresh_D4RL_install",
+    "official_full_dataset_download",
+    "legacy_MuJoCo",
+    "CUDA",
+    "Docker",
+    "real_LLM_service",
+    "successful_live_research_APIs",
+    "three_distribution_D4RL_development_training",
+    "ninety_final_D4RL_training_jobs"
+  ],
+  "scientific_claims": {
+    "algorithm_improvement_proven": false,
+    "agent_superiority_proven": false,
+    "note": "Synthetic execution verifies mechanics, not D4RL distribution coverage or returns."
+  },
+  "packaging": {
+    "filename": "autoresearch_lab-0.5.1-py3-none-any.whl",
+    "sha256": "fc75aa04d7a9ae885b433829178f2c13ac2bad87bfc503cea4f0fbec8387db67",
+    "source_file_count": 66,
+    "all_python_sources_identical": true
+  },
+  "review": "docs/review-v0.5.1.md",
+  "execution_note": "An initial full-suite invocation was interrupted by the tool command timeout; the frozen-source rerun completed. Historical logs are retained without calling them current validation."
+}

@@ -1,0 +1,6 @@
+# Suggested compatibility bounds, NOT an empirically validated or complete lock.
+# Python 3.10; install and verify MuJoCo binaries separately.
+numpy>=1.24,<2
+gym==0.23.1
+mujoco-py==2.1.2.14
+Cython<3

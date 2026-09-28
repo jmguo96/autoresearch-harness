@@ -1,0 +1,25 @@
+[uv-local-version] running; log: /mnt/data/autoresearch-harness-uv/.arlab/package-validation/execution/logs/001-uv-local-version.log
+[version] running; log: /mnt/data/autoresearch-harness-uv/.arlab/package-validation/execution/logs/002-version.log
+[uv-build-wheel] running; log: /mnt/data/autoresearch-harness-uv/.arlab/package-validation/execution/logs/003-uv-build-wheel.log
+[uv-new-venv] running; log: /mnt/data/autoresearch-harness-uv/.arlab/package-validation/execution/logs/004-uv-new-venv.log
+[uv-install-package] running; log: /mnt/data/autoresearch-harness-uv/.arlab/package-validation/execution/logs/005-uv-install-package.log
+[installed-import] running; log: /mnt/data/autoresearch-harness-uv/.arlab/package-validation/execution/logs/006-installed-import.log
+{
+  "scope": "real_uv_offline_build_and_fresh_venv_install_using_existing_Python_NOT_target_legacy_stack",
+  "source_python": "3.13.5 (main, Jul 15 2026, 20:25:40) [GCC 14.2.0]",
+  "downloaded_dependencies": false,
+  "reused_host_python_for_build": true,
+  "uv_version": "uv 0.10.0",
+  "installed": {
+    "version": "0.6.2",
+    "prefix": "/mnt/data/autoresearch-harness-uv/.arlab/package-validation/installed",
+    "base_prefix": "/usr",
+    "module": "/mnt/data/autoresearch-harness-uv/.arlab/package-validation/installed/lib/python3.13/site-packages/arlab/__init__.py",
+    "user_site_enabled": false
+  },
+  "wheel": "/mnt/data/autoresearch-harness-uv/.arlab/package-validation/dist/autoresearch_lab-0.6.2-py3-none-any.whl",
+  "wheel_sha256": "567deda3f7e6b6ffc43c8eb1b6b402f0dc29856a5b64195fe3427c22b7279afa",
+  "include_system_site_packages": false,
+  "wheel_code_mismatches": [],
+  "passed": true
+}

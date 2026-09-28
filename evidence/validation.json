@@ -1,0 +1,73 @@
+{
+  "version": "0.6.3",
+  "edition": "uv_project_local_native_debs",
+  "date": "2026-09-21",
+  "source_sha256": "7ecccc28db3d76232365862d75810e4c0912a8e8abc8929c85a4ca14d111620a",
+  "runtime": {
+    "python": "3.13.5",
+    "platform": "Linux-6.18.44-x86_64-with-glibc2.41",
+    "primary_test_uid": 0,
+    "additional_native_test_uid": 1000,
+    "packages": {
+      "torch": "2.10.0+cpu",
+      "numpy": "2.3.5",
+      "pydantic": "2.13.4",
+      "pytest": "9.0.2",
+      "h5py": "3.15.1",
+      "safetensors": "0.7.0"
+    }
+  },
+  "tests": {
+    "total": 419,
+    "passed": 418,
+    "skipped": 1,
+    "failures": 0,
+    "errors": 0,
+    "log": "native-full-tests.log",
+    "junit": "native-full-tests.xml"
+  },
+  "new_native_tests": 37,
+  "nonroot_repeated_subset": {
+    "uid": 1000,
+    "passed": 37,
+    "failures": 0,
+    "log": "native-nonroot-tests.log",
+    "not_added_to_full_test_total": true
+  },
+  "actual_checks": {
+    "signed_apt_repository": "real apt-get index verification, dependency resolution, metadata/URI calls on an explicitly generated SIGNED LOCAL TEST repository; no official network package download",
+    "dpkg_deb_extraction": "real dpkg-deb filesystem data stream extraction of generated TEST debs; maintainer-script marker did not execute",
+    "native_compile_and_load": "real C compiler + OpenMP + synthetic GL/OSMesa ABI fixture; TEST_ABI_FIXTURE_NOT_MESA; NOT real Mesa/D4RL validation",
+    "host_dpkg_status": "unchanged around signed local repository test; private package status remains empty",
+    "path_and_archive_guards": "traversal, escaping links, sensitive libc/loader exports, offline cache tampering tested",
+    "reused_prefix": "receipt/hash checks before loading; compile/run on staging and final prefix",
+    "source_integrity": "63 pre-existing non-installer Python files byte-identical to 0.6.2 (includes core research, IQL/open candidates, Kimi/model tools)",
+    "syntax": "77 package Python files, 6877 AST statements, no detected errors; not a substitute for target Python3.10 execution",
+    "shell": "bash -n start.sh deploy.sh passed",
+    "previews": "start/deploy/native dry-run executed; no install or LLM calls"
+  },
+  "architecture": {
+    "python_environment": "uv",
+    "native_mode_default": "auto",
+    "uses_docker": false,
+    "uses_sudo": false,
+    "system_package_install": false,
+    "apt_usage": "private signed index and solver only; actual install forbidden",
+    "executes_maintainer_scripts": false,
+    "replaces_host_glibc": false
+  },
+  "not_verified": [
+    "official HTTPS native repository download (runtime DNS unavailable)",
+    "real Mesa/LLVM dependency closure loading on every supported release",
+    "target host from user log",
+    "fresh complete uv Python3.10 plus legacy MuJoCo build",
+    "real D4RL exploration/final panel",
+    "CUDA and real Kimi service"
+  ],
+  "test_iteration_notes": [
+    "Initial uid1000 fixture build inherited setgid mode; test DEBIAN dir explicitly chmod0755. Production source unchanged by this fix.",
+    "One repeated uid1000 fixture exceeded GnuPG socket path length; final subset rerun with short private test directory. Production only verifies signatures; does not generate signing keys.",
+    "Prior release evidence is historical; local TEST package repositories and ABI fixtures are not official package or benchmark results."
+  ],
+  "review": "docs/review-native-local.md"
+}
