@@ -1,10 +1,10 @@
 """Compact discovery cards; detailed argument schemas are already sent once by the model adapter."""
 TOOLS = {
     "plan": "Update the working plan; plan done flags are not experimental evidence.",
-    "inspect": "Page a candidate file/trial/feedback/plan; old feedback is readable by id='action-N'. Inspect schema for full recipe or tool schema.",
+    "inspect": "Page artifacts. schema ids: recipe or decision; tool ids: actual tool names. Empty template id lists templates. IQL expression candidates expose candidate.py/networks.py through an editable iql-source copy. Old feedback: id='action-N'.",
     "review_proposal": "Persist a candid pre-edit self-review of a proposed METHOD change; reject mere hyperparameter tuning.",
-    "propose": "Register an immutable method candidate after an approved review_proposal; cite its review_id.",
-    "edit_algorithm": "Edit candidate/template files only after an approved review_proposal; cite its review_id.",
+    "propose": "Register a complete executable recipe after an approved review_proposal; cite its review_id. Descriptive pseudocode is not a recipe; use edit_algorithm for new Python operations.",
+    "edit_algorithm": "Edit candidate source after an approved review_proposal; cite its review_id. An expression IQL parent is automatically copied into iql-source with its original config; replace actor_weights in candidate.py to change extraction.",
     "check_candidate": "Bounded real training/export/rollout check, charged but EXCLUDED from rankings.",
     "run": "Choose a dev case/seed, cumulative training steps, eval_episodes; reuse compatible checkpoints automatically. Start cheap; expand only when useful.",
     "continue_trial": "Extend a completed scored trial to cumulative steps with the SAME schedule, data, seed and code; or increase eval_episodes without retraining.",

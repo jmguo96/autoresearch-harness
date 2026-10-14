@@ -248,6 +248,14 @@ class ContextBuilder:
                 'action_feedback': "inspect(target='feedback', id='action-N')",
                 'sources': 'read_source / find_source',
                 'schema': 'inspect(schema)',
+                'tool_arguments': "inspect(target='tool', id='edit_algorithm'); schema ids are recipe/decision",
+                'iql_source_edit': (
+                    "For an expression IQL candidate, inspect(target='candidate', id=<parent>, path='candidate.py') "
+                    "reads its editable IQL source copy. edit_algorithm on that parent automatically uses this copy "
+                    "with the parent config. Replace actor_weights to implement a new extraction mechanism. "
+                    "Read networks.py similarly. Templates: inspect(target='template', id='')."
+                    if contract.task == 'iql' and contract.code_execution.mode != 'disabled' else None
+                ),
                 'omitted_candidates': len(candidates) - len(cards),
             },
         }

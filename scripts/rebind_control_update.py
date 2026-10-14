@@ -17,7 +17,11 @@ import uuid
 from pathlib import Path
 
 SOURCE = Path(__file__).resolve().parents[1]
-APPROVED_SOURCE_SHA256 = "58efe751e8ba3fd5a02ec3c05a236929270669cce0454697210b9706b41df974"
+APPROVED_SOURCE_SHA256 = "a3083ebd49430516d92d31d7aabebb12fde35d1a143b6229832977ada9c46012"
+APPROVED_TEMPLATE_FILES = {
+    "src/arlab/algorithms/templates.py": "ec37a7117d94db8bf5540f2df739bd3311779a5334a22435d6565e8ab0576564",
+    "src/arlab/templates/iql_candidate.py": "1736a4cf84a0565ad32f520ce0c767e4c53857af16a634f397d1588ef1a3f211",
+}
 sys.path.insert(0, str(SOURCE / "src"))
 
 from arlab.core.io import canonical, read_json, source_digest, write_json  # noqa: E402
@@ -31,13 +35,14 @@ def critical_source_unchanged() -> int:
     """Check training, evaluation, policy and audit files against the release manifest."""
     manifest = read_json(SOURCE / "FILE_MANIFEST.json")
     expected = {item["path"]: item["sha256"] for item in manifest["files"]}
+    expected.update(APPROVED_TEMPLATE_FILES)
     prefixes = ("src/arlab/tasks/", "src/arlab/algorithms/")
     exact = {
         "src/arlab/core/checkpoints.py", "src/arlab/core/panels.py",
         "src/arlab/core/stats.py", "src/arlab/core/jobs.py",
         "src/arlab/worker.py", "src/arlab/audit.py",
     }
-    paths = [path for path in expected if path.startswith(prefixes) or path in exact]
+    paths = [path for path in expected if path.startswith(prefixes) or path in exact or path in APPROVED_TEMPLATE_FILES]
     for relative in paths:
         current = hashlib.sha256((SOURCE / relative).read_bytes()).hexdigest()
         if current != expected[relative]:
@@ -72,7 +77,7 @@ def migrate(expected_old: str, apply: bool) -> dict:
                 raise ValueError("Study source does not match expected old source")
             if checks.get("source_sha256") != expected_old:
                 raise ValueError("Deployment checks do not match the study source")
-            if not status_row or json.loads(status_row[0]) not in ("paused", "running") or get("frozen"):
+            if not status_row or json.loads(status_row[0]) not in ("paused", "running", "model_failed", "blocked") or get("frozen"):
                 raise ValueError("Only an unfrozen stopped study can be rebound")
             if not agent_row:
                 raise ValueError("Study agent configuration is missing")
@@ -159,6 +164,7 @@ def migrate(expected_old: str, apply: bool) -> dict:
                 "checkpoint_policy": "Verified historical scores remain in the panel; old checkpoints cannot continue. Run a new trajectory.",
                 "critical_release_files_verified": checked_files,
                 "backup": backup_db.name,
+                "control_policy": "Proposal approval uses review_id, parent and verdict. IQL expression parents now expose candidate.py/networks.py and edit_algorithm creates an iql-source copy with the original config; prior missing-source errors are resolved. Inspect tool arguments by target='tool'; schema IDs are recipe/decision. Model-response failures and tool failures have separate counters.",
             }
             deployment["source_identity"] = current_identity
             deployment["control_source_migration"] = migration
@@ -188,6 +194,20 @@ def migrate(expected_old: str, apply: bool) -> dict:
                                })))
                 db.execute("UPDATE meta SET value=? WHERE key='source_sha256'", (canonical(current_source),))
                 db.execute("UPDATE meta SET value=? WHERE key='agent'", (canonical(new_agent),))
+                review_row = get("proposal_review")
+                if review_row:
+                    review = json.loads(review_row[0])
+                    if review and "hypothesis_sha256" in review:
+                        event_id = review.get("id", "")
+                        if not event_id.startswith("event-") or not event_id[6:].isdigit():
+                            raise ValueError("Invalid persisted review reference")
+                        event = db.execute("SELECT payload FROM events WHERE seq=? AND kind='proposal_reviewed'",
+                                           (int(event_id[6:]),)).fetchone()
+                        if not event:
+                            raise ValueError("Persisted proposal review event is missing")
+                        review["hypothesis"] = json.loads(event[0])["hypothesis"]
+                        review.pop("hypothesis_sha256")
+                        db.execute("UPDATE meta SET value=? WHERE key='proposal_review'", (canonical(review),))
                 db.execute("INSERT INTO meta(key,value) VALUES ('status',?) "
                            "ON CONFLICT(key) DO UPDATE SET value=excluded.value", (canonical("paused"),))
                 db.execute("INSERT INTO meta(key,value) VALUES ('source_migration',?) "

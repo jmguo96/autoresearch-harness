@@ -6,13 +6,23 @@ from typing import Any
 
 from arlab.algorithms.spec import CodeRecipe
 
-TEMPLATES = ("ensemble-mixture", "diffusion-extraction")
+TEMPLATES = ("ensemble-mixture", "diffusion-extraction", "iql-source")
 
 
 def template(name: str, *, tiny: bool = False) -> dict[str, Any]:
     if name not in TEMPLATES:
         raise ValueError(f"Unknown template; choose from {TEMPLATES}")
     directory = files("arlab").joinpath("templates")
+    if name == "iql-source":
+        from arlab.tasks.iql.recipe import IQLRecipe
+        sources = {
+            "candidate.py": directory.joinpath("iql_candidate.py").read_text(encoding="utf-8"),
+            "networks.py": files("arlab").joinpath("tasks/iql/networks.py").read_text(encoding="utf-8"),
+        }
+        config = IQLRecipe(hidden_dims=[32, 32] if tiny else [256, 256],
+                           batch_size=32 if tiny else 256).model_dump(mode="json")
+        return CodeRecipe(name=name, files=sources, config=config,
+                          max_optimizer_steps_per_tick=3).model_dump(mode="json")
     sources = {p: directory.joinpath(p).read_text(encoding="utf-8") for p in ("candidate.py", "networks.py")}
     config = {"hidden_dims": [32, 32] if tiny else [256, 256],
               "batch_size": 32 if tiny else 256, "ensemble": 3,

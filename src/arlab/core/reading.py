@@ -17,12 +17,17 @@ def inspect_artifact(action, store, task, *, contract=None):
             raise ValueError("Unknown task skill")
         content = task.skill()
     elif action.target == "schema":
-        if action.id in ("", "recipe"):
+        if action.id in ("", "recipe", "expression", "algorithm"):
             content = task.recipe_schema()
         elif action.id == "decision":
             content = decision.model_json_schema()
+        elif action.id in available:
+            schema = decision.model_json_schema()
+            name = schema["properties"]["action"]["discriminator"]["mapping"][action.id].rsplit("/", 1)[-1]
+            content = {"schema": schema["$defs"][name],
+                       "nested_definitions": "inspect(target='schema', id='decision')"}
         else:
-            raise ValueError("Unknown schema: use recipe or decision")
+            raise ValueError("Use inspect(target='schema', id='recipe' or 'decision'), or inspect(target='tool', id=<tool name>)")
     elif action.target == "tool":
         if action.id not in available:
             raise ValueError("Unknown tool")
@@ -51,13 +56,21 @@ def inspect_artifact(action, store, task, *, contract=None):
     elif action.target == "trial":
         content = store.trial(action.id)
     elif action.target in ("candidate", "template"):
-        candidate = store.candidate(action.id) if action.target == "candidate" else None
+        candidate = store.candidate(action.id or store.get("focus_candidate") or store.get("baseline")) if action.target == "candidate" else None
+        if action.target == "template" and not action.id:
+            from arlab.algorithms.templates import TEMPLATES
+            content = {"templates": list(TEMPLATES),
+                       "next": "inspect(target='template', id=<template name>, path='candidate.py')"}
+            return {"target": action.target, "id": action.id, "path": action.path,
+                    **text_page(json.dumps(content, indent=2), action.start_line, action.max_lines, action.max_characters, action.offset)}
         recipe = candidate["recipe"] if candidate else (task.template(action.id) if action.target == "template" else None)
         if recipe is None:
             raise ValueError("Unknown candidate")
         if action.path:
+            if recipe.get("kind") != "python" and task.name == "iql":
+                recipe = task.template("iql-source")
             if action.path not in recipe.get("files", {}):
-                raise ValueError("File does not exist in this immutable candidate")
+                raise ValueError(f"Unknown source path {action.path!r}; available files: {list(recipe.get('files', {}))}. Use inspect with no path to read the recipe.")
             content = recipe["files"][action.path]
         elif recipe.get("kind") == "python":
             content = {k: v for k, v in recipe.items() if k != "files"}
@@ -71,6 +84,8 @@ def inspect_artifact(action, store, task, *, contract=None):
         raise ValueError("Artifact does not exist")
     text = content if isinstance(content, str) else json.dumps(content, ensure_ascii=False, indent=2)
     return {"target": action.target, "id": action.id, "path": action.path,
+            **({"source_origin": "iql-source", "edit_hint": "edit_algorithm with this expression parent automatically creates an editable IQL source copy"}
+               if action.target == "candidate" and action.path and candidate["recipe"].get("kind") != "python" and task.name == "iql" else {}),
             **text_page(text, action.start_line, action.max_lines, action.max_characters, action.offset)}
 
 

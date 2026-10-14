@@ -70,7 +70,7 @@ def build_parser() -> argparse.ArgumentParser:
     p.add_argument("--steps", type=int, default=40)
     p.add_argument("--candidates", type=int, default=3)
     p = commands.add_parser("template", help="Export an editable algorithm SOURCE bundle")
-    p.add_argument("--name", choices=["ensemble-mixture", "diffusion-extraction"], required=True)
+    p.add_argument("--name", choices=["ensemble-mixture", "diffusion-extraction", "iql-source"], required=True)
     p.add_argument("--output", type=Path, required=True)
     p.add_argument("--source-dir", type=Path)
     p.add_argument("--tiny", action="store_true")

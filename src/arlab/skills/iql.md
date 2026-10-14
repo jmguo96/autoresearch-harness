@@ -32,6 +32,20 @@ Real-trajectory multi-step returns are permitted when explicit links exist.
 2. CodeRecipe: kind="python", files={relative.py: source}, entrypoint="candidate.py:build",
    config={...}, max_optimizer_steps_per_tick=... . A complete editable algorithm.
 
+For a localized change to IQL, inspect(target="candidate", id=<parent>,
+path="candidate.py") reads the editable iql-source copy; networks.py is also
+available. edit_algorithm on an expression IQL parent automatically starts from
+this source copy with the original parent configuration. Replace actor_weights
+to implement rank weighting or another extraction mechanism. Value and actor
+phases use the same training batch; runtime context sampling means the source
+adapter is not a bitwise reproduction of the expression trainer's trajectory.
+
+inspect(target="template", id="") lists the available templates.
+inspect(target="template", id="iql-source", path="candidate.py") reads the source.
+inspect(target="schema", id="recipe" or "decision") reads type schemas;
+inspect(target="tool", id="edit_algorithm") reads that tool's arguments.
+Do not guess schema IDs or repeatedly read a retained immutable result.
+
 inspect(target="template", id="ensemble-mixture" or "diffusion-extraction")
 returns editable source; these are starting points, not the full legal space.
 edit_algorithm can instantiate a template as a child of IQL, or revise an existing

@@ -45,15 +45,51 @@ def test_real_model_requires_matching_approved_review_before_candidate(tmp_path)
             method_change="New actor objective", why_not_tuning="Objective changes",
             feasibility="Simple expression", failure_mode="Underfit", verdict="proceed")))
         assert agent._context()["proposal_review"]["id"] == approved.details["review_id"]
+        assert agent.store.get("proposal_review")["hypothesis"]["question"] == hypothesis.question
+        assert "hypothesis_sha256" not in agent.store.get("proposal_review")
         scalar = {**raw["seed_recipe"], "weight_cap": 20.0}
         with pytest.raises(ValueError, match="Only scalar hyperparameters"):
             agent._execute(Decision(summary="tuning", action=ProposeAction(
                 kind="propose", parent=baseline, hypothesis=hypothesis,
                 recipe=scalar, review_id=approved.details["review_id"])))
-        result = agent._execute(propose(approved.details["review_id"]))
+        # An equivalent public description need not be copied byte-for-byte.
+        paraphrased = hypothesis.model_copy(update={"question": "Can the changed actor objective improve results?"})
+        result = agent._execute(Decision(summary="candidate", action=ProposeAction(
+            kind="propose", parent=baseline, hypothesis=paraphrased,
+            recipe=recipe, review_id=approved.details["review_id"])))
         assert result.details["candidate"]
         assert agent.store.get("proposal_review") is None
         with pytest.raises(ValueError, match="approved review_proposal"):
             agent._execute(propose(approved.details["review_id"]))
+    finally:
+        agent.close()
+
+
+def test_tool_rejections_do_not_count_as_model_response_failures(tmp_path, monkeypatch):
+    from arlab.core.schema import Feedback
+    contract = demo_contract(tmp_path, steps=3)
+    agent = Harness(contract, tmp_path / "run")
+    decision = Decision(summary="fixture", action={
+        "kind": "inspect", "target": "skill", "id": "iql"})
+    replies = iter([decision, decision, ValueError("Malformed model JSON"), decision])
+    calls = 0
+    def decide():
+        item = next(replies)
+        if isinstance(item, Exception):
+            raise item
+        return item
+    def execute(_):
+        nonlocal calls
+        calls += 1
+        if calls < 3:
+            raise ValueError("Rejected proposal fixture")
+        agent.store.put("status", "completed")
+        return Feedback(status="ok", summary="Recovery fixture")
+    monkeypatch.setattr(agent, "_decide", decide)
+    monkeypatch.setattr(agent, "_execute", execute)
+    try:
+        assert agent.run()["status"] == "completed"
+        assert calls == 3
+        assert sum(e["kind"] == "model_failure" for e in agent.store.events()) == 1
     finally:
         agent.close()

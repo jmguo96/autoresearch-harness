@@ -186,13 +186,12 @@ class Harness:
             )
         return None
 
-    def _require_proposal_review(self, parent: str, hypothesis: Any, review_id: str) -> None:
+    def _require_proposal_review(self, parent: str, review_id: str) -> None:
         if self.contract.model.provider == "demo":
             return
         review = self.store.get("proposal_review") or {}
         if (not review_id or review.get("id") != review_id
                 or review.get("parent") != parent
-                or review.get("hypothesis_sha256") != digest(hypothesis)
                 or review.get("verdict") != "proceed"):
             raise ValueError("A matching, approved review_proposal is required before changing a candidate")
 
@@ -357,7 +356,8 @@ class Harness:
                 raise ValueError("Hypothesis refers to nonexistent evidence")
             eid = self.store.event("proposal_reviewed", action)
             self.store.put("proposal_review", {
-                "id": eid, "parent": action.parent, "hypothesis_sha256": digest(action.hypothesis),
+                "id": eid, "parent": action.parent,
+                "hypothesis": action.hypothesis.model_dump(mode="json"),
                 "method_change": action.method_change, "why_not_tuning": action.why_not_tuning,
                 "feasibility": action.feasibility, "failure_mode": action.failure_mode,
                 "verdict": action.verdict,
@@ -369,11 +369,16 @@ class Harness:
             parent = self.store.candidate(action.parent)
             if parent is None:
                 raise ValueError("Unknown parent candidate")
-            self._require_proposal_review(action.parent, action.hypothesis, action.review_id)
+            self._require_proposal_review(action.parent, action.review_id)
             if self.contract.code_execution.mode == "disabled":
                 raise PermissionError("Owner has not authorized Python algorithm candidates")
             from arlab.algorithms.spec import apply_source_edits
             base = self.task.template(action.template) if action.template else parent["recipe"]
+            if base.get("kind") != "python":
+                if self.task.name != "iql":
+                    raise ValueError("This parent has no Python source; specify an editable template")
+                base = self.task.template("iql-source")
+                base["config"] = dict(parent["recipe"])
             recipe = apply_source_edits(base, action)
             return self._execute(
                 Decision(
@@ -391,7 +396,7 @@ class Harness:
         if isinstance(action, ProposeAction):
             if not self.store.candidate(action.parent):
                 raise ValueError("Unknown parent candidate")
-            self._require_proposal_review(action.parent, action.hypothesis, action.review_id)
+            self._require_proposal_review(action.parent, action.review_id)
             if not all(self.store.evidence_exists(e) for e in action.hypothesis.evidence_ids):
                 raise ValueError("Hypothesis refers to nonexistent evidence")
             recipe = self.task.validate_recipe(action.recipe)
@@ -504,7 +509,8 @@ class Harness:
             if self.store.get("status") == "completed":
                 return self.report()
             self.store.put("status", "running")
-            consecutive_errors = 0
+            model_errors = 0
+            tool_errors = 0
             try:
                 while True:
                     if time.time() - self.store.get("started_at") >= self.contract.budget.max_wall_seconds:
@@ -539,22 +545,23 @@ class Harness:
                         except BudgetExceeded:
                             raise
                         except Exception as exc:
-                            consecutive_errors += 1
+                            model_errors += 1
                             self.store.event("model_failure", {"error": str(exc)[:1000]})
-                            if consecutive_errors >= 3:
+                            if model_errors >= 3:
                                 self.store.put("status", "model_failed")
                                 break
                             continue
+                        model_errors = 0
                         aid = self.store.begin_action(decision)
                     # 循环 3：执行一个行动。预算耗尽停止循环；可报告错误成为下一轮反馈。
                     try:
                         feedback = self._observation_guard(decision) or self._execute(decision)
                         if feedback.status == "ok":
-                            consecutive_errors = 0
+                            tool_errors = 0
                     except BudgetExceeded:
                         raise
                     except (ValueError, PermissionError, RuntimeError, OSError) as exc:
-                        consecutive_errors += 1
+                        tool_errors += 1
                         status = "invalid_action" if isinstance(exc, (ValueError, PermissionError)) else "infrastructure_failure"
                         feedback = Feedback(
                             status=status,
@@ -605,7 +612,7 @@ class Harness:
                     # 循环 5：依据实际状态结束或继续，不以模型自报的计划进度代替证据。
                     if self.store.get("status") == "completed":
                         break
-                    if consecutive_errors >= 4:
+                    if tool_errors >= 4:
                         self.store.put("status", "blocked")
                         break
                     if self.store.get("loop_guard_rejections", 0) >= 8:
